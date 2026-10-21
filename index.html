@@ -143,7 +143,8 @@ button:disabled,select:disabled,input:disabled{cursor:not-allowed}
 .mobile-actions{display:none}
 .mobile-settings-dialog{width:min(600px,calc(100% - 28px));max-height:90dvh;overflow:auto}
 .mobile-settings-dialog .settings{border:0;box-shadow:none;background:transparent}
-.mobile-settings-dialog>.primary-btn{margin-top:18px}
+.source-file .replace-label{display:none}
+.mobile-settings-footer{margin-top:18px}
 @media(min-width:651px) and (max-width:990px){.topbar{gap:22px}.topnav{gap:20px}}
 
 @media(max-width:650px){
@@ -168,14 +169,49 @@ button:disabled,select:disabled,input:disabled{cursor:not-allowed}
   .color-detail strong{font-size:14px}.color-detail small{font-size:11px}.color-count{font-size:14px}.color-edit{width:48px;min-height:44px;font-size:12px}
   .palette-note{font-size:11px}.clear-highlight{font-size:12px;min-height:40px}
   .below-workspace{font-size:10px;line-height:1.7}.below-workspace .plain-btn{font-size:12px;min-height:40px}.how-it-works{display:none}footer{font-size:9px}
-  .mobile-settings-dialog{position:fixed;inset:auto 0 0;margin:0;width:100%;max-width:none;max-height:88dvh;padding:18px 18px 22px;border-radius:18px 18px 0 0}
-  .mobile-settings-dialog .settings{padding:0;gap:0 18px}.mobile-settings-dialog .setting-section{padding-top:18px;padding-bottom:18px}
-  .mobile-settings-dialog .section-title h2{font-size:13px}.mobile-settings-dialog .text-btn{font-size:12px;min-height:36px}.mobile-settings-dialog .value-pill{font-size:10px}
-  .mobile-settings-dialog .field-note,.mobile-settings-dialog .range-labels{font-size:10px;line-height:1.7}.mobile-settings-dialog .presets button{font-size:11px;min-height:36px}
-  .mobile-settings-dialog .upload-zone{min-height:116px}.mobile-settings-dialog .upload-zone strong{font-size:12px}.mobile-settings-dialog .upload-zone>span:last-child{font-size:10px}
-  .mobile-settings-dialog .source-file strong{font-size:12px}.mobile-settings-dialog .source-file div>span{font-size:10px}.mobile-settings-dialog .source-file>div{flex-basis:60%}
-  .mobile-settings-dialog .display-section .switch-row{flex:1 1 130px;justify-content:space-between;min-height:44px;font-size:12px}
-  .mobile-settings-dialog input[type=range]{height:6px}.mobile-settings-dialog input[type=range]::-webkit-slider-thumb{width:20px;height:20px}.mobile-settings-dialog input[type=range]::-moz-range-thumb{width:17px;height:17px}
+  /* 只有中间设置滚动；标题和返回按钮留在拇指可达的位置。关闭的原生 dialog 仍由浏览器隐藏。 */
+  .mobile-settings-dialog{--settings-muted:#70687b;position:fixed;inset:auto 0 0;margin:0;width:100%;max-width:none;height:min(92dvh,860px);max-height:92dvh;padding:0;overflow:hidden;border-radius:20px 20px 0 0}
+  .mobile-settings-dialog[open]{display:flex;flex-direction:column}
+  :root[data-theme=dark] .mobile-settings-dialog{--settings-muted:#b2abc3}
+  .mobile-settings-dialog>.dialog-heading{flex:none;align-items:center;margin:0;padding:16px 20px 14px;border-bottom:1px solid var(--line)}
+  .mobile-settings-dialog .dialog-heading h2{font-size:20px;line-height:1.4;letter-spacing:0}
+  #mobileSettingsHint{font-size:12px;line-height:1.6;color:var(--settings-muted);margin-top:3px}
+  #mobileSettingsContent{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:0 20px;scroll-padding-block:12px}
+  #mobileSettingsContent:focus-visible{outline-offset:-4px}
+  .mobile-settings-footer{flex:none;margin:0;padding:12px 20px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--line)}
+  .mobile-settings-footer .primary-btn{width:100%;min-height:48px;font-size:14px}
+  /* 单列消除精细度右侧的空白，原来的同一份设置仍用于桌面侧栏。 */
+  .mobile-settings-dialog .settings{display:block;padding:0}
+  .mobile-settings-dialog .setting-section{display:block;padding:16px 0}
+  .mobile-settings-dialog .section-title{min-height:28px;margin-bottom:6px}
+  .mobile-settings-dialog .section-title h2{font-size:14px}
+  .mobile-settings-dialog .text-btn{font-size:12px;min-height:44px;flex:none}
+  .mobile-settings-dialog .value-pill{font-size:12px;padding:5px 8px;font-variant-numeric:tabular-nums}
+  .mobile-settings-dialog .field-note,.mobile-settings-dialog .range-labels{font-size:11px;line-height:1.7;color:var(--settings-muted)}
+  .mobile-settings-dialog .field-note{margin-top:8px}
+  .mobile-settings-dialog .presets{gap:8px;margin-top:12px}
+  .mobile-settings-dialog .presets button{font-size:12px;min-height:44px}
+  /* 手机上主工作区已有上传入口，这里只展示当前图片与明确的更换动作。 */
+  .mobile-settings-dialog .import-section{padding-top:4px}
+  .mobile-settings-dialog .upload-zone{display:none}
+  .mobile-settings-dialog .source-file{flex-wrap:nowrap;gap:10px;padding:10px;margin:0;background:var(--page);border-radius:10px}
+  .mobile-settings-dialog .source-file img{width:48px;height:48px;flex:none}
+  .mobile-settings-dialog .source-file>div{flex:1;min-width:0}
+  .mobile-settings-dialog .source-file strong{font-size:13px;max-width:none}
+  .mobile-settings-dialog .source-file div>span{font-size:11px;line-height:1.5;color:var(--settings-muted);overflow-wrap:anywhere}
+  .mobile-settings-dialog .source-file .icon-btn{display:flex;flex:none;width:auto;min-width:52px;min-height:44px;padding:0 4px;gap:4px;color:var(--purple)}
+  .mobile-settings-dialog .source-file .replace-label{display:inline;font-size:12px;white-space:nowrap}
+  .mobile-settings-dialog .source-file .icon-btn svg{display:none}
+  .mobile-settings-dialog .active-card-name{display:block;font-size:14px;line-height:1.6}
+  .mobile-settings-dialog .display-section .switch-row{justify-content:space-between;min-height:48px;font-size:13px;color:var(--ink)}
+  .mobile-settings-dialog .switch-row input{width:44px;height:44px}
+  .mobile-settings-dialog .switch{width:36px;height:22px}
+  .mobile-settings-dialog .switch:after{width:18px;height:18px}
+  .mobile-settings-dialog .switch-row input:checked+.switch:after{transform:translateX(14px)}
+  /* 控件保留 44px 的拖动命中高度，视觉轨道仍是 6px，避免细滑块难以触摸。 */
+  .mobile-settings-dialog .settings input[type=range]{height:44px;margin:0;background-size:100% 6px;background-position:center;background-repeat:no-repeat}
+  .mobile-settings-dialog input[type=range]::-webkit-slider-thumb{width:22px;height:22px}
+  .mobile-settings-dialog input[type=range]::-moz-range-thumb{width:19px;height:19px}
   dialog .dialog-heading h2{font-size:18px}dialog .icon-btn{min-width:44px;min-height:44px}
   dialog input[type=text],dialog .search-label input,dialog .import-table input{min-height:44px;font-size:16px}
   .color-input-row label,.search-label{font-size:12px}.card-choice{min-height:56px}.card-choice strong{font-size:12px}
@@ -218,7 +254,7 @@ button:disabled,select:disabled,input:disabled{cursor:not-allowed}
       <aside class="settings panel" id="settingsPanel" aria-label="图片与图纸设置">
         <section class="setting-section import-section"><div class="section-title"><h2>选择图片</h2><button id="demoBtn" class="text-btn">试试示例</button></div>
           <button class="upload-zone" id="uploadBtn"><span class="upload-icon"><svg><use href="#i-upload"/></svg></span><strong>点击上传，或拖入图片</strong><span>PNG / JPG / WebP / GIF · 最大 20 MB</span></button>
-          <div class="source-file"><img id="sourceThumb" alt="当前原图缩略图"><div><strong id="fileName">午后的橘子猫.png</strong><span id="fileMeta">内置示例 · 32 × 32 像素</span></div><button id="replaceBtn" class="icon-btn" title="更换图片" aria-label="更换图片"><svg><use href="#i-image"/></svg></button></div>
+          <div class="source-file"><img id="sourceThumb" alt="当前原图缩略图"><div><strong id="fileName">午后的橘子猫.png</strong><span id="fileMeta">内置示例 · 32 × 32 像素</span></div><button id="replaceBtn" class="icon-btn" title="更换图片" aria-label="更换图片"><svg><use href="#i-image"/></svg><span class="replace-label">更换</span></button></div>
         </section>
         <section class="setting-section"><div class="section-title"><h2>图纸精细度</h2><span class="value-pill" id="sizeValue">32 × 32</span></div><label class="sr-only" for="sizeRange">图纸最长边豆数</label><input type="range" id="sizeRange" min="16" max="128" value="32"><div class="range-labels"><span>更好上手</span><span>更多细节</span></div><div class="presets" aria-label="尺寸预设"><button data-size="29">29 格</button><button data-size="52">52 格</button><button data-size="104">104 格</button></div><p class="field-note">按原图比例缩放，最长边 <strong id="longestValue">32</strong> 颗豆</p></section>
         <section class="setting-section card-section"><div class="section-title"><h2>使用色卡</h2><button id="importCardBtn" class="text-btn">导入色卡</button></div><strong id="activeCardName" class="active-card-name">MARD 221 色</strong><p id="activeCardCount" class="field-note">221 色 · 内置参考色卡</p><button id="defaultCardBtn" class="text-btn" hidden>恢复 MARD 221</button><p class="field-note">按色卡自动找近似色，图纸显示对应色号。<br>可导入 CSV / JSON / 图片色卡。</p></section>
@@ -239,7 +275,11 @@ button:disabled,select:disabled,input:disabled{cursor:not-allowed}
     <footer><span>我勒个豆 · 拼豆图纸工坊</span><span>让灵感落在小小的格子里 <span class="footer-flower">✳</span></span></footer>
   </main>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <dialog id="mobileSettingsDialog" class="mobile-settings-dialog" aria-labelledby="mobileSettingsTitle"><div class="dialog-heading"><h2 id="mobileSettingsTitle">图纸设置</h2><button id="closeMobileSettingsBtn" class="icon-btn" aria-label="关闭图纸设置">×</button></div><div id="mobileSettingsContent"></div><button id="doneMobileSettingsBtn" class="primary-btn">完成，返回图纸</button></dialog>
+  <dialog id="mobileSettingsDialog" class="mobile-settings-dialog" aria-labelledby="mobileSettingsTitle" aria-describedby="mobileSettingsHint">
+    <div class="dialog-heading"><div><h2 id="mobileSettingsTitle">图纸设置</h2><p id="mobileSettingsHint">调整会实时更新图纸</p></div><button id="closeMobileSettingsBtn" class="icon-btn" aria-label="关闭图纸设置">×</button></div>
+    <div id="mobileSettingsContent" tabindex="0" role="region" aria-label="图纸设置选项"></div>
+    <div class="mobile-settings-footer"><button id="doneMobileSettingsBtn" class="primary-btn">完成，返回图纸</button></div>
+  </dialog>
   <dialog id="colorDialog" class="color-dialog" aria-labelledby="colorDialogTitle" aria-describedby="colorTargetSummary">
     <form id="colorForm" novalidate>
       <div class="dialog-heading"><h2 id="colorDialogTitle">替换色号</h2><button type="button" id="closeColorBtn" class="icon-btn" aria-label="关闭色号选择">×</button></div>
@@ -1828,7 +1868,12 @@ window.BeadImports = (() => {
   for (const id of ['closeMobileSettingsBtn', 'doneMobileSettingsBtn']) $(id).addEventListener('click', () => $('mobileSettingsDialog').close());
   $('mobileExportBtn').addEventListener('click', () => { flushPending(); exportPattern(); });
   mobileLayout.addEventListener('change', adaptMobileLayout);
-  $('replaceBtn').addEventListener('click', () => $('fileInput').click());
+  $('replaceBtn').addEventListener('click', () => {
+    // 手机更换图片先返回图纸，避免文件选择结束后仍被设置面板遮住。
+    $('mobileSettingsDialog').close();
+    // 与主上传入口共用文件控件，继续沿用文件校验与失败保留原图的处理。
+    $('fileInput').click();
+  });
   $('fileInput').addEventListener('change', event => { loadFile(event.target.files[0]); event.target.value = ''; });
   for (const name of ['dragenter', 'dragover']) $('uploadBtn').addEventListener(name, event => { event.preventDefault(); $('uploadBtn').classList.add('drag-over'); });
   for (const name of ['dragleave', 'drop']) $('uploadBtn').addEventListener(name, event => { event.preventDefault(); $('uploadBtn').classList.remove('drag-over'); });
