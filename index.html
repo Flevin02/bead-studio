@@ -329,12 +329,12 @@ button:disabled,select:disabled,input:disabled{cursor:not-allowed}
       </aside>
       <section class="preview panel" aria-label="图纸预览">
         <div class="preview-toolbar"><div class="preview-title"><span class="status-dot"></span><h2 id="previewHeading">图纸预览</h2><span id="demoTag" class="demo-tag">示例</span></div><div class="view-toggle" role="group" aria-label="图纸方向"><button id="normalBtn" aria-pressed="true" class="active"><svg><use href="#i-normal"/></svg>正向</button><button id="mirrorBtn" aria-pressed="false"><svg><use href="#i-mirror"/></svg>镜像</button></div><div class="reading-tools reading-only"><span id="readingDirection">正向</span><button id="paletteToggleBtn" class="text-btn" aria-expanded="false" aria-controls="readingPaletteDialog">豆子清单</button></div></div>
-        <div id="readingHighlightStatus" class="reading-highlight-status" hidden><span><i id="readingHighlightSwatch" aria-hidden="true"></i>正在高亮 <strong id="readingHighlightCode"></strong></span><button id="cancelReadingHighlightBtn" class="text-btn">取消高亮</button></div>
+        <div id="readingHighlightStatus" class="reading-highlight-status" hidden><span><i id="readingHighlightSwatch" aria-hidden="true"></i>仅显示 <strong id="readingHighlightCode"></strong></span><button id="cancelReadingHighlightBtn" class="text-btn">取消高亮</button></div>
         <div class="canvas-stage" id="canvasStage"><div class="canvas-scroll" id="canvasScroll"><div class="canvas-holder" id="canvasHolder"><canvas id="patternCanvas" aria-label="拼豆图纸，点击色块可替换同色号，配色清单可查看豆数和改色" role="img"></canvas><div id="cellMarker" class="cell-marker" aria-hidden="true" hidden></div><div id="rowMarker" class="axis-marker row-marker" aria-hidden="true" hidden></div><div id="columnMarker" class="axis-marker column-marker" aria-hidden="true" hidden></div></div></div><div class="direction-badge" id="directionBadge"><svg><use href="#i-normal"/></svg><span>正向图纸</span></div></div>
         <div class="preview-bottom"><div class="cell-info" id="cellInfo"><svg><use href="#i-grid"/></svg><span>点击色块，快捷改色</span></div><div class="zoom-controls"><button id="zoomOutBtn" class="icon-btn" aria-label="缩小">−</button><button id="zoomResetBtn" class="zoom-number" aria-label="重置缩放">100%</button><button id="zoomInBtn" class="icon-btn" aria-label="放大">＋</button><span class="zoom-divider"></span><button id="fitBtn" class="icon-btn" title="适应画布" aria-label="适应画布"><svg viewBox="0 0 24 24"><path d="M9 4H4v5m11-5h5v5M4 15v5h5m11-5v5h-5"/></svg></button></div></div>
         <div class="mirror-note" id="mirrorNote" hidden><svg><use href="#i-mirror"/></svg>当前为镜像，导出的图纸也会保持这个方向。</div>
       </section>
-      <aside class="palette panel" id="palettePanel" aria-label="配色与用量"><div class="palette-heading"><h2>这次要用的豆子</h2><svg><use href="#i-bead"/></svg></div><div class="stats"><div><strong id="totalBeads">0</strong><span>颗豆子</span></div><div><strong id="totalColors">0</strong><span>种颜色</span></div></div><div class="dimensions"><span>预计成品尺寸</span><strong id="dimensions">16 × 16 cm</strong><small>按 5 mm 豆估算</small></div><div class="palette-list-heading"><span>配色色号</span><span>用量 / 颗</span></div><div class="palette-list" id="paletteList"></div><button id="clearHighlightBtn" class="clear-highlight" hidden>取消颜色高亮</button><button id="resetColorsBtn" class="clear-highlight" hidden>恢复自动配色</button><p class="reading-palette-note reading-only">点击色号高亮全部同色豆子，其他颜色会淡化；再次点击即可恢复。收起清单后高亮仍保留。</p><p class="palette-note">点击色号高亮，点击「改色」换色号。<br>默认 MARD 221，颜色为屏幕参考。<br><button id="sourcesBtn" class="text-btn">色卡来源与识别说明</button></p></aside>
+      <aside class="palette panel" id="palettePanel" aria-label="配色与用量"><div class="palette-heading"><h2>这次要用的豆子</h2><svg><use href="#i-bead"/></svg></div><div class="stats"><div><strong id="totalBeads">0</strong><span>颗豆子</span></div><div><strong id="totalColors">0</strong><span>种颜色</span></div></div><div class="dimensions"><span>预计成品尺寸</span><strong id="dimensions">16 × 16 cm</strong><small>按 5 mm 豆估算</small></div><div class="palette-list-heading"><span>配色色号</span><span>用量 / 颗</span></div><div class="palette-list" id="paletteList"></div><button id="clearHighlightBtn" class="clear-highlight" hidden>取消颜色高亮</button><button id="resetColorsBtn" class="clear-highlight" hidden>恢复自动配色</button><p class="reading-palette-note reading-only">点击图纸色块或清单色号，只显示全部同色号豆子，其他豆子暂时隐藏。取消高亮恢复全图。</p><p class="palette-note">点击色号高亮，点击「改色」换色号。<br>默认 MARD 221，颜色为屏幕参考。<br><button id="sourcesBtn" class="text-btn">色卡来源与识别说明</button></p></aside>
     </div>
     <div class="below-workspace"><span><svg><use href="#i-lock"/></svg>图片仅在你的浏览器里处理，不会上传</span><button id="printBtn" class="plain-btn"><svg><use href="#i-print"/></svg>打印图纸</button></div>
     <section class="how-it-works" aria-label="使用步骤"><div class="how-intro"><span>一点点耐心，</span><strong>拼出好多快乐。</strong></div><div class="how-step"><span class="step-number">1</span><div><strong>放进一张喜欢的图片</strong><p>头像、插画、可爱的瞬间都可以</p></div></div><svg class="step-arrow"><use href="#i-arrow"/></svg><div class="how-step"><span class="step-number">2</span><div><strong>调成适合你的图纸</strong><p>选尺寸、减颜色，也能镜像</p></div></div><svg class="step-arrow"><use href="#i-arrow"/></svg><div class="how-step"><span class="step-number">3</span><div><strong>备好豆子，开始创作</strong><p>导出网格图纸和配色用量清单</p></div></div></section>
@@ -367,7 +367,7 @@ button:disabled,select:disabled,input:disabled{cursor:not-allowed}
       <div class="color-dialog-actions"><button type="button" id="cancelColorBtn" class="secondary-btn">取消</button><button type="submit" class="primary-btn">保存颜色</button></div>
     </form>
   </dialog>
-  <dialog id="guideDialog"><div class="dialog-heading"><h2>从图片，到你的第一件作品</h2><button id="closeGuideBtn" class="icon-btn" aria-label="关闭指南">×</button></div><ol><li><strong>选择图片</strong><p>点击上传或拖入 PNG、JPG、WebP、GIF。推荐轮廓清晰的插画；透明部分不放豆，半透明颜色会与白色混合。</p></li><li><strong>调整图纸</strong><p>精细度决定最长边的豆数；颜色越少，备豆越容易。可打开色号，或点击右侧颜色单独高亮。悬停可查看行列、色号和 HEX；制图模式点击色块可快捷改色，替换全部同色号格子。</p></li><li><strong>确认方向</strong><p>“正向”保持原图方向；“镜像”把图纸水平翻转。若制作过程需要翻面，请按自己的转印和熨烫方式选择。</p></li><li><strong>拼豆时专心读图</strong><p>切换到“拼豆”，点击格子只定位并保留行、列、色号和 HEX。展开豆子清单，点击色号可高亮全部同色豆子，其他颜色柔和淡化；再次点击或点图纸上方“取消高亮”恢复。返回“制图”继续调整，图纸数据不变。</p></li><li><strong>下次接着做</strong><p>修改作品后会自动保存最近一件作品，看到“已保存到此设备”后再关闭。重开可恢复原图、配色、模式和阅读位置。仅保存在此浏览器，清除网站数据后无法恢复，设备之间不自动同步。开始新作品会先提醒替换；保存失败可重试，PNG仍可导出。</p></li><li><strong>白天与黑夜</strong><p>顶部月亮/太阳按钮可切换模式。首次随系统设置，手动选择会在浏览器中记住。黑夜调暗界面、图纸空白格和网格，豆色与色号不变，导出和打印仍是白底。</p></li><li><strong>导出与制作</strong><p>PNG 包含完整网格、色号和用量清单。默认使用 MARD 221 色号。也可导入 CSV/JSON 或图片色卡，再按导入色卡匹配。屏幕颜色为参考，备豆请核对实物。</p></li></ol><div class="guide-foot"><svg><use href="#i-lock"/></svg>可以离线使用，图片不会离开你的浏览器。</div><button id="gotItBtn" class="primary-btn">开始我的创作</button></dialog>
+  <dialog id="guideDialog"><div class="dialog-heading"><h2>从图片，到你的第一件作品</h2><button id="closeGuideBtn" class="icon-btn" aria-label="关闭指南">×</button></div><ol><li><strong>选择图片</strong><p>点击上传或拖入 PNG、JPG、WebP、GIF。推荐轮廓清晰的插画；透明部分不放豆，半透明颜色会与白色混合。</p></li><li><strong>调整图纸</strong><p>精细度决定最长边的豆数；颜色越少，备豆越容易。可打开色号，或点击右侧颜色单独高亮。悬停可查看行列、色号和 HEX；制图模式点击色块可快捷改色，替换全部同色号格子。</p></li><li><strong>确认方向</strong><p>“正向”保持原图方向；“镜像”把图纸水平翻转。若制作过程需要翻面，请按自己的转印和熨烫方式选择。</p></li><li><strong>拼豆时专心读图</strong><p>切换到“拼豆”，点击有色格子会显示该色号的全部豆子，其他色号暂时隐藏，同时保留行、列、色号和 HEX。也可从豆子清单选色；点击图纸上方“取消高亮”或再次点击清单选中色号恢复全图。返回“制图”继续调整，图纸数据不变。</p></li><li><strong>下次接着做</strong><p>修改作品后会自动保存最近一件作品，看到“已保存到此设备”后再关闭。重开可恢复原图、配色、模式和阅读位置。仅保存在此浏览器，清除网站数据后无法恢复，设备之间不自动同步。开始新作品会先提醒替换；保存失败可重试，PNG仍可导出。</p></li><li><strong>白天与黑夜</strong><p>顶部月亮/太阳按钮可切换模式。首次随系统设置，手动选择会在浏览器中记住。黑夜调暗界面、图纸空白格和网格，豆色与色号不变，导出和打印仍是白底。</p></li><li><strong>导出与制作</strong><p>PNG 包含完整网格、色号和用量清单。默认使用 MARD 221 色号。也可导入 CSV/JSON 或图片色卡，再按导入色卡匹配。屏幕颜色为参考，备豆请核对实物。</p></li></ol><div class="guide-foot"><svg><use href="#i-lock"/></svg>可以离线使用，图片不会离开你的浏览器。</div><button id="gotItBtn" class="primary-btn">开始我的创作</button></dialog>
     <dialog id="importDialog" class="import-dialog" aria-labelledby="importTitle">
     <div class="dialog-heading"><h2 id="importTitle">导入我的色卡</h2><button id="closeImportBtn" class="icon-btn" aria-label="关闭导入色卡">×</button></div>
     <p class="color-target">导入后，只从这张色卡里匹配图片，并显示你自己的色号。</p>
@@ -1484,7 +1484,7 @@ window.BeadProjectStore = (() => {
     editingColor: null,
     // 固定最近点击的显示坐标；颜色和色号每次从当前图纸读取，改色后不会显示旧值。
     activeCell: null,
-    // 制图保留快捷改色；拼豆只定位，两种模式共用同一份格子与配色。
+    // 制图保留快捷改色；拼豆定位并筛选同色号，两种模式共用同一份格子与配色。
     mode: 'design', sourceId: null, viewTask: 0
   };
   const P = window.BeadPalettes;
@@ -1768,7 +1768,7 @@ window.BeadProjectStore = (() => {
     $('designModeBtn').setAttribute('aria-pressed', String(mode === 'design'));
     $('beadingModeBtn').setAttribute('aria-pressed', String(mode === 'beading'));
     $('previewHeading').textContent = mode === 'beading' ? '拼豆图纸' : '图纸预览';
-    canvas.setAttribute('aria-label', mode === 'beading' ? '拼豆图纸，点击格子定位并查看行列、色号和颜色，豆子清单可高亮同色号' : '拼豆图纸，点击色块可替换同色号，配色清单可查看豆数和改色');
+    canvas.setAttribute('aria-label', mode === 'beading' ? '拼豆图纸，点击色块只显示全部同色号豆子并查看格子信息，取消高亮恢复全图' : '拼豆图纸，点击色块可替换同色号，配色清单可查看豆数和改色');
     // 同一份清单和设置随屏幕布局移动，避免编号与状态出现两份不同步的DOM。
     placePalette();
     render();
@@ -1934,7 +1934,7 @@ window.BeadProjectStore = (() => {
   }
 
   /** 绘制完整图纸。预览与PNG共用同一绘制路径，导出不受缩放和高亮影响。 */
-  function drawPattern(ctx, { x = MARGIN, y = MARGIN, cell = CELL, codes = false, grid = true, beads = false, highlight = null, dark = false, dimOthers = false } = {}) {
+  function drawPattern(ctx, { x = MARGIN, y = MARGIN, cell = CELL, codes = false, grid = true, beads = false, highlight = null, dark = false, isolateColor = false } = {}) {
     const width = state.width * cell, height = state.height * cell;
     // 深色仅用于屏幕环境；调用方未指定 dark 时，导出和打印保持白底及原始豆色。
     ctx.fillStyle = dark ? '#191C25' : '#FFFFFF';
@@ -1943,13 +1943,12 @@ window.BeadProjectStore = (() => {
       for (let col = 0; col < state.width; col++) {
         const index = cellAt(col, row);
         if (index < 0) continue;
+        // 拼豆找色只绘制目标色号：其他豆子及其格内文字暂时隐藏，原始格子数据不变。
+        if (isolateColor && highlight !== null && highlight !== index) continue;
         const color = state.palette[index];
         const left = x + col * cell, top = y + row * cell;
-        const subdued = dimOthers && highlight !== null && highlight !== index;
-        ctx.globalAlpha = !dimOthers && highlight !== null && highlight !== index ? .15 : 1;
-        // 白天向纸白淡化，黑夜向画布底色柔和靠拢；保持色相，不覆盖文字的深色遮罩。
-        const base = dark ? [25, 28, 37] : [255, 255, 255], strength = dark ? .32 : .18;
-        ctx.fillStyle = subdued ? `rgb(${color.rgb.map((channel, i) => Math.round(channel * strength + base[i] * (1 - strength))).join(',')})` : color.hex;
+        ctx.globalAlpha = highlight !== null && highlight !== index ? .15 : 1;
+        ctx.fillStyle = color.hex;
         if (beads) {
           ctx.beginPath(); ctx.arc(left + cell / 2, top + cell / 2, cell * .44, 0, Math.PI * 2); ctx.fill();
           ctx.fillStyle = dark ? '#191C25CC' : '#FFFFFFB8';
@@ -1958,7 +1957,7 @@ window.BeadProjectStore = (() => {
           ctx.fillRect(left, top, cell, cell);
         }
         if (codes) {
-          ctx.fillStyle = subdued ? (dark ? '#A39BAD' : '#9B94A5') : textColor(color.rgb);
+          ctx.fillStyle = textColor(color.rgb);
           ctx.font = `500 ${Math.min(cell * .35, cell * 1.5 / color.code.length)}px ${FONT}`;
           ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
           ctx.fillText(color.code, left + cell / 2, top + cell / 2 + .5);
@@ -2003,7 +2002,7 @@ window.BeadProjectStore = (() => {
     drawPattern(canvas.getContext('2d'), {
       grid: $('gridCheck').checked, codes: $('codeCheck').checked,
       beads: $('beadCheck').checked, highlight: state.selected,
-      dark: document.documentElement.dataset.theme === 'dark', dimOthers: state.mode === 'beading'
+      dark: document.documentElement.dataset.theme === 'dark', isolateColor: state.mode === 'beading'
     });
     fitCanvas();
     // 渲染可能由换色或恢复触发，格子信息也要读取新的色号与颜色。
@@ -2355,7 +2354,7 @@ window.BeadProjectStore = (() => {
   /** 显示悬停格或最近点击格的坐标、色号和 HEX；未指定坐标时保留点击信息。 */
   function showCellInfo(cell = state.activeCell) {
     const output = $('cellInfo').querySelector('span');
-    if (!cell) { output.textContent = state.mode === 'beading' ? '点击格子，查看位置与色号' : '点击色块，快捷改色'; return; }
+    if (!cell) { output.textContent = state.mode === 'beading' ? '点击色块，只看同色号豆子' : '点击色块，快捷改色'; return; }
     const index = cellAt(cell.x, cell.y);
     const label = index < 0 ? '留空' : `${state.palette[index].code} · ${state.palette[index].hex}`;
     output.textContent = `第 ${cell.y + 1} 行，第 ${cell.x + 1} 列 · ${label}`;
@@ -2375,18 +2374,27 @@ window.BeadProjectStore = (() => {
     return cell;
   }
 
-  /** 点击彩色格快捷编辑全图同色号；空白格仍可查看坐标，但不打开改色窗口。 */
+  /** 制图点击有色格打开全图同色号改色；拼豆点击则仅显示同色号，留空格只定位。 */
   function editCellColor(event) {
     // 先提交滑块待执行的重新采样，再按当前尺寸和镜像方向判断点击位置。
     flushPending();
     const cell = inspectCell(event);
     if (!cell) return;
     state.activeCell = cell;
-    // 拼豆只定位，包括留空格；DOM外框和边缘标记不会写进导出图纸。
+    // 两种模式都保留完整格子信息；DOM外框和边缘标记不会写进导出图纸。
     updateCellMarker();
-    markProjectChange();
-    if (state.mode === 'beading') return;
     const index = cellAt(cell.x, cell.y);
+    if (state.mode === 'beading') {
+      if (index >= 0) {
+        state.selected = index;
+        // 复用清单高亮与取消入口，所有同色号保留原色，其他豆子只在预览中隐藏。
+        updateHighlight();
+      }
+      // 阅读选择随已有作品保存；点击留空格不清除当前找色结果。
+      markProjectChange();
+      return;
+    }
+    markProjectChange();
     if (index < 0) return;
     // 复用已有的色卡、校验、合并用量及保存逻辑，快捷入口只改变打开方式。
     openColorEditor(index, cell);
