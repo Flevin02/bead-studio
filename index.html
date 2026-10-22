@@ -16,8 +16,8 @@
       document.documentElement.dataset.themeSource = manual ? 'manual' : 'system';
     })();
   </script>
-  <link rel="stylesheet" href="assets/a2031a5eff63335a/style.css">
-<link rel="icon" type="image/png" href="assets/a2031a5eff63335a/favicon.png">
+  <link rel="stylesheet" href="assets/099ac542d9e3c6c4/style.css">
+<link rel="icon" type="image/png" href="assets/099ac542d9e3c6c4/favicon.png">
 </head>
 <body>
   <svg class="svg-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
@@ -38,23 +38,25 @@
     <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></symbol>
   </defs></svg>
   <header class="topbar">
-    <a class="brand" href="#" aria-label="我勒个豆首页"><span class="brand-mark"><img src="assets/a2031a5eff63335a/mascot-small.png" alt="" width="48" height="48" draggable="false"></span><span class="brand-name">我勒个豆<span>拼豆图纸工坊</span></span></a>
+    <a class="brand" href="#" aria-label="我勒个豆首页"><span class="brand-mark"><img src="assets/099ac542d9e3c6c4/mascot-small.png" alt="" width="48" height="48" draggable="false"></span><span class="brand-name">我勒个豆<span>拼豆图纸工坊</span></span></a>
+    <section class="project-bar" aria-label="作品与操作模式">
+      <div class="project-actions"><div class="mode-switch" role="group" aria-label="操作模式"><button id="designModeBtn" class="active" aria-pressed="true">制图</button><button id="beadingModeBtn" aria-pressed="false">拼豆</button></div><button id="readingExportBtn" class="secondary-btn reading-only"><svg><use href="#i-download"/></svg>导出图纸</button><button id="mobileExportBtn" class="primary-btn"><svg><use href="#i-download"/></svg>导出图纸</button></div>
+      <div class="save-box" id="saveBox" hidden><div class="save-line"><span id="saveStatus" role="status" aria-live="polite">正在读取本地作品…</span><button id="retrySaveBtn" class="text-btn" hidden>重试保存</button><button id="retryRestoreBtn" class="text-btn" hidden>重试恢复</button><button id="reloadProjectBtn" class="text-btn" hidden>重新载入</button><button id="newProjectBtn" class="text-btn" hidden>开始新作品</button></div></div>
+    </section>
     <nav class="topnav" aria-label="主导航"><a class="nav-current" href="#workshop" aria-current="page">图纸工坊</a><button class="plain-btn" id="guideBtn"><svg><use href="#i-help"/></svg>使用指南</button><button class="plain-btn" id="themeToggleBtn" aria-label="切换到黑夜模式" aria-pressed="false" title="切换到黑夜模式"><svg aria-hidden="true"><use href="#i-moon"/></svg><span>黑夜模式</span></button></nav>
-    <span class="local-pill"><span></span>灵感在这里，图片在本地</span>
+    <button id="exportBtn" class="primary-btn"><svg><use href="#i-download"/></svg>导出图纸<span>PNG</span></button>
   </header>
   <main class="app">
-    <section class="project-bar" aria-label="作品与操作模式">
-      <div class="project-actions"><div class="mode-switch" role="group" aria-label="操作模式"><button id="designModeBtn" class="active" aria-pressed="true">制图</button><button id="beadingModeBtn" aria-pressed="false">拼豆</button></div><button id="readingExportBtn" class="secondary-btn reading-only"><svg><use href="#i-download"/></svg>导出图纸</button></div>
-      <div class="save-box"><div class="save-line"><span id="saveStatus" role="status" aria-live="polite">正在读取本地作品…</span><button id="retrySaveBtn" class="text-btn" hidden>重试保存</button><button id="retryRestoreBtn" class="text-btn" hidden>重试恢复</button><button id="reloadProjectBtn" class="text-btn" hidden>重新载入</button><button id="newProjectBtn" class="text-btn" hidden>开始新作品</button></div><small>仅保存在此浏览器；清除网站数据后无法恢复。</small></div>
-    </section>
-    <section class="page-heading"><div><div class="tiny-heading"><span class="little-flower">✳</span> 给每一颗灵感，找到位置</div><h1>把喜欢，变成一颗颗小豆子<span class="heading-dot">。</span></h1><p>上传一张图片，让你的下一件拼豆作品从这里开始。</p></div><button id="exportBtn" class="primary-btn"><svg><use href="#i-download"/></svg>导出图纸<span>PNG</span></button></section>
-    <div class="mobile-actions" aria-label="手机常用操作"><button id="mobileUploadBtn" class="secondary-btn"><svg><use href="#i-upload"/></svg><span>上传图片</span></button><button id="mobileSettingsBtn" class="secondary-btn" aria-haspopup="dialog" aria-controls="mobileSettingsDialog"><svg><use href="#i-grid"/></svg>图纸设置</button><button id="mobileExportBtn" class="primary-btn"><svg><use href="#i-download"/></svg>导出图纸</button></div>
+
+
+    <div class="mobile-actions" aria-label="手机常用操作"><button id="mobileUploadBtn" class="secondary-btn mobile-source"><img id="mobileSourceThumb" alt="" width="36" height="36"><span class="mobile-source-copy"><strong id="mobileFileName">午后的橘子猫.png</strong><small id="mobileSourceAction">上传图片</small></span></button><button id="mobileSettingsBtn" class="secondary-btn" aria-haspopup="dialog" aria-controls="mobileSettingsDialog"><svg><use href="#i-grid"/></svg>图纸设置</button></div>
     <input type="file" id="fileInput" accept="image/png,image/jpeg,image/webp,image/gif" hidden>
     <div class="workspace" id="workshop">
       <aside class="settings panel" id="settingsPanel" aria-label="图片与图纸设置">
-        <section class="setting-section import-section"><div class="section-title"><h2>选择图片</h2><button id="demoBtn" class="text-btn">试试示例</button></div>
-          <button class="upload-zone" id="uploadBtn"><span class="upload-icon"><svg><use href="#i-upload"/></svg></span><strong>点击上传，或拖入图片</strong><span>PNG / JPG / WebP / GIF · 最大 20 MB</span></button>
+        <h2 class="rail-heading">图纸设置</h2>
+        <section class="setting-section import-section"><div class="section-title"><h2>原始图片</h2><button id="demoBtn" class="text-btn">试试示例</button></div>
           <div class="source-file"><img id="sourceThumb" alt="当前原图缩略图"><div><strong id="fileName">午后的橘子猫.png</strong><span id="fileMeta">内置示例 · 32 × 32 像素</span></div><button id="replaceBtn" class="icon-btn" title="更换图片" aria-label="更换图片"><svg><use href="#i-image"/></svg><span class="replace-label">更换</span></button></div>
+          <button class="upload-zone" id="uploadBtn"><span class="upload-icon"><svg><use href="#i-upload"/></svg></span><strong>点击上传，或拖入图片</strong><span>PNG / JPG / WebP / GIF · 最大 20 MB</span></button>
           <p id="sourceError" class="source-error" role="alert" hidden></p>
         </section>
         <section class="setting-section"><div class="section-title"><h2>图纸精细度</h2><span class="value-pill" id="sizeValue">32 × 32</span></div><label class="sr-only" for="sizeRange">图纸最长边豆数</label><input type="range" id="sizeRange" min="16" max="128" value="32"><div class="range-labels"><span>更好上手</span><span>更多细节</span></div><div class="presets" aria-label="尺寸预设"><button data-size="29">29 格</button><button data-size="52">52 格</button><button data-size="104">104 格</button></div><p class="field-note">按原图比例缩放，最长边 <strong id="longestValue">32</strong> 颗豆</p></section>
@@ -64,16 +66,16 @@
         <div class="tip"><svg><use href="#i-spark"/></svg><p>小提示<br><span>轮廓清晰、背景简单的图片，<br>通常会有更好的拼豆效果。</span></p></div>
       </aside>
       <section class="preview panel" aria-label="图纸预览">
-        <div class="preview-toolbar"><div class="preview-title"><span class="status-dot"></span><h2 id="previewHeading">图纸预览</h2><span id="demoTag" class="demo-tag">示例</span></div><div class="view-toggle" role="group" aria-label="图纸方向"><button id="normalBtn" aria-pressed="true" class="active"><svg><use href="#i-normal"/></svg>正向</button><button id="mirrorBtn" aria-pressed="false"><svg><use href="#i-mirror"/></svg>镜像</button></div><div class="reading-tools reading-only"><span id="readingDirection">正向</span><button id="paletteToggleBtn" class="text-btn" aria-expanded="false" aria-controls="readingPaletteDialog">豆子清单</button></div></div>
-        <div id="readingHighlightStatus" class="reading-highlight-status" hidden><span id="readingHighlightLabel" role="status" aria-live="polite"><span id="readingAllColors">显示全部颜色</span><span id="readingSelectedColor" hidden><i id="readingHighlightSwatch" aria-hidden="true"></i>仅显示 <strong id="readingHighlightCode"></strong></span></span><button id="cancelReadingHighlightBtn" class="text-btn" hidden>取消高亮</button></div>
+        <div class="preview-toolbar"><div class="preview-title"><span class="status-dot"></span><h2 id="previewHeading">图纸预览</h2><span id="demoTag" class="demo-tag">示例</span><span id="patternMeta" class="pattern-meta">32 × 32 格</span></div><div id="readingHighlightStatus" class="reading-highlight-status" hidden><span id="readingHighlightLabel" role="status" aria-live="polite"><span id="readingAllColors">显示全部颜色</span><span id="readingSelectedColor" hidden><i id="readingHighlightSwatch" aria-hidden="true"></i>仅显示 <strong id="readingHighlightCode"></strong></span></span><button id="cancelReadingHighlightBtn" class="text-btn" hidden>取消高亮</button></div><div class="view-toggle" role="group" aria-label="图纸方向"><button id="normalBtn" aria-pressed="true" class="active"><svg><use href="#i-normal"/></svg>正向</button><button id="mirrorBtn" aria-pressed="false"><svg><use href="#i-mirror"/></svg>镜像</button></div><div class="reading-tools reading-only"><span id="readingDirection">正向</span><button id="paletteToggleBtn" class="text-btn" aria-expanded="false" aria-controls="readingPaletteDialog">豆子清单</button></div></div>
         <div class="canvas-stage" id="canvasStage"><div class="canvas-scroll" id="canvasScroll"><div class="canvas-holder" id="canvasHolder"><canvas id="patternCanvas" aria-label="拼豆图纸，点击色块可替换同色号，配色清单可查看豆数和改色" role="img"></canvas><div id="cellMarker" class="cell-marker" aria-hidden="true" hidden></div><div id="rowMarker" class="axis-marker row-marker" aria-hidden="true" hidden></div><div id="columnMarker" class="axis-marker column-marker" aria-hidden="true" hidden></div></div></div><div class="direction-badge" id="directionBadge"><svg><use href="#i-normal"/></svg><span>正向图纸</span></div></div>
         <div class="preview-bottom"><div class="cell-info" id="cellInfo"><svg><use href="#i-grid"/></svg><span>点击色块，快捷改色</span></div><div class="zoom-controls"><button id="zoomOutBtn" class="icon-btn" aria-label="缩小">−</button><button id="zoomResetBtn" class="zoom-number" aria-label="重置缩放">100%</button><button id="zoomInBtn" class="icon-btn" aria-label="放大">＋</button><span class="zoom-divider"></span><button id="fitBtn" class="icon-btn" title="适应画布" aria-label="适应画布"><svg viewBox="0 0 24 24"><path d="M9 4H4v5m11-5h5v5M4 15v5h5m11-5v5h-5"/></svg></button></div></div>
         <div class="mirror-note" id="mirrorNote" hidden><svg><use href="#i-mirror"/></svg>当前为镜像，导出的图纸也会保持这个方向。</div>
       </section>
-      <aside class="palette panel" id="palettePanel" aria-label="配色与用量"><div class="palette-heading"><h2>这次要用的豆子</h2><svg><use href="#i-bead"/></svg></div><div class="stats"><div><strong id="totalBeads">0</strong><span>颗豆子</span></div><div><strong id="totalColors">0</strong><span>种颜色</span></div></div><div class="dimensions"><span>预计成品尺寸</span><strong id="dimensions">16 × 16 cm</strong><small>按 5 mm 豆估算</small></div><div class="palette-list-heading"><span>配色色号</span><span>用量 / 颗</span></div><div class="palette-list" id="paletteList"></div><button id="clearHighlightBtn" class="clear-highlight" hidden>取消颜色高亮</button><button id="resetColorsBtn" class="clear-highlight" hidden>恢复自动配色</button><p class="reading-palette-note reading-only">点击图纸色块或清单色号，只显示全部同色号豆子，其他豆子暂时隐藏。取消高亮恢复全图。</p><p class="palette-note">点击色号高亮，点击「改色」换色号。<br>默认 MARD 221，颜色为屏幕参考。<br><button id="sourcesBtn" class="text-btn">色卡来源与识别说明</button></p></aside>
+      <aside class="palette panel" id="palettePanel" aria-label="配色与用量"><div class="palette-heading"><h2>豆子清单</h2><svg><use href="#i-bead"/></svg></div><div class="stats"><div><strong id="totalBeads">0</strong><span>颗</span></div><div><strong id="totalColors">0</strong><span>色</span></div></div><div class="dimensions"><span>预计成品尺寸</span><strong id="dimensions">16 × 16 cm</strong><small>按 5 mm 豆估算</small></div><div class="palette-list-heading"><span>配色色号</span><span>用量 / 颗</span></div><div class="palette-list" id="paletteList"></div><button id="clearHighlightBtn" class="clear-highlight" hidden>取消颜色高亮</button><button id="resetColorsBtn" class="clear-highlight" hidden>恢复自动配色</button><p class="reading-palette-note reading-only">点击图纸色块或清单色号，只显示全部同色号豆子，其他豆子暂时隐藏。取消高亮恢复全图。</p><p class="palette-note">点击色号高亮，点击「改色」换色号。<br>默认 MARD 221，颜色为屏幕参考。<br><button id="sourcesBtn" class="text-btn">色卡来源与识别说明</button></p></aside>
     </div>
+    <section class="mobile-palette-peek" aria-label="常用豆色预览"><button id="mobilePaletteBtn" class="palette-peek-heading" aria-haspopup="dialog" aria-controls="readingPaletteDialog" aria-expanded="false"><strong>豆子清单</strong><span id="mobileBeadSummary">433 颗 · 10 色</span><svg><use href="#i-arrow"/></svg></button><div id="mobileColorPeek" class="palette-peek-colors"></div></section>
     <div class="below-workspace"><span><svg><use href="#i-lock"/></svg>图片仅在你的浏览器里处理，不会上传</span><button id="printBtn" class="plain-btn"><svg><use href="#i-print"/></svg>打印图纸</button></div>
-    <section class="how-it-works" aria-label="使用步骤"><div class="how-intro"><span>一点点耐心，</span><strong>拼出好多快乐。</strong></div><div class="how-step"><span class="step-number">1</span><div><strong>放进一张喜欢的图片</strong><p>头像、插画、可爱的瞬间都可以</p></div></div><svg class="step-arrow"><use href="#i-arrow"/></svg><div class="how-step"><span class="step-number">2</span><div><strong>调成适合你的图纸</strong><p>选尺寸、减颜色，也能镜像</p></div></div><svg class="step-arrow"><use href="#i-arrow"/></svg><div class="how-step"><span class="step-number">3</span><div><strong>备好豆子，开始创作</strong><p>导出网格图纸和配色用量清单</p></div></div></section>
+
     <footer><span>我勒个豆 · 拼豆图纸工坊</span><span>让灵感落在小小的格子里 <span class="footer-flower">✳</span></span></footer>
   </main>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
@@ -103,7 +105,7 @@
       <div class="color-dialog-actions"><button type="button" id="cancelColorBtn" class="secondary-btn">取消</button><button type="submit" class="primary-btn">保存颜色</button></div>
     </form>
   </dialog>
-  <dialog id="guideDialog"><div class="dialog-heading"><h2>从图片，到你的第一件作品</h2><button id="closeGuideBtn" class="icon-btn" aria-label="关闭指南">×</button></div><ol><li><strong>选择图片</strong><p>点击上传或拖入 PNG、JPG、WebP、GIF。推荐轮廓清晰的插画；透明部分不放豆，半透明颜色会与白色混合。</p></li><li><strong>调整图纸</strong><p>精细度决定最长边的豆数；颜色越少，备豆越容易。可打开色号，或点击右侧颜色单独高亮。悬停可查看行列、色号和 HEX；制图模式点击色块可快捷改色，替换全部同色号格子。</p></li><li><strong>确认方向</strong><p>“正向”保持原图方向；“镜像”把图纸水平翻转。若制作过程需要翻面，请按自己的转印和熨烫方式选择。</p></li><li><strong>拼豆时专心读图</strong><p>切换到“拼豆”，点击有色格子会显示该色号的全部豆子，其他色号暂时隐藏，同时保留行、列、色号和 HEX。也可从豆子清单选色；点击图纸上方“取消高亮”或再次点击清单选中色号恢复全图。返回“制图”继续调整，图纸数据不变。</p></li><li><strong>下次接着做</strong><p>修改作品后会自动保存最近一件作品，看到“已保存到此设备”后再关闭。重开可恢复原图、配色、模式和阅读位置。仅保存在此浏览器，清除网站数据后无法恢复，设备之间不自动同步。开始新作品会先提醒替换；保存失败可重试，PNG仍可导出。</p></li><li><strong>白天与黑夜</strong><p>顶部月亮/太阳按钮可切换模式。首次随系统设置，手动选择会在浏览器中记住。黑夜调暗界面、图纸空白格和网格，豆色与色号不变，导出和打印仍是白底。</p></li><li><strong>导出与制作</strong><p>PNG 包含完整网格、色号和用量清单。默认使用 MARD 221 色号。也可导入 CSV/JSON 或图片色卡，再按导入色卡匹配。屏幕颜色为参考，备豆请核对实物。</p></li></ol><div class="guide-foot"><svg><use href="#i-lock"/></svg>图片在本地处理；图片色卡首次识别需要联网。</div><button id="gotItBtn" class="primary-btn">开始我的创作</button></dialog>
+  <dialog id="guideDialog"><div class="dialog-heading"><h2>从图片，到你的第一件作品</h2><button id="closeGuideBtn" class="icon-btn" aria-label="关闭指南">×</button></div><ol><li><strong>选择图片</strong><p>点击上传或拖入 PNG、JPG、WebP、GIF。推荐轮廓清晰的插画；透明部分不放豆，半透明颜色会与白色混合。</p></li><li><strong>调整图纸</strong><p>精细度决定最长边的豆数；颜色越少，备豆越容易。可打开色号，或点击右侧颜色单独高亮。悬停可查看行列、色号和 HEX；制图模式点击色块可快捷改色，替换全部同色号格子。</p></li><li><strong>确认方向</strong><p>“正向”保持原图方向；“镜像”把图纸水平翻转。若制作过程需要翻面，请按自己的转印和熨烫方式选择。</p></li><li><strong>拼豆时专心读图</strong><p>切换到“拼豆”，点击有色格子会显示该色号的全部豆子，其他色号暂时隐藏，同时保留行、列、色号和 HEX。也可从豆子清单选色；点击图纸上方“取消高亮”或再次点击清单选中色号恢复全图。返回“制图”继续调整，图纸数据不变。</p></li><li><strong>下次接着做</strong><p>最近一件作品会在此浏览器后台自动保存，重开后可接着做，不显示日常保存通知。设备之间不自动同步，清除网站数据或浏览器存储不可用时无法保留；PNG可随时下载另存。开始新作品会先提醒替换。</p></li><li><strong>白天与黑夜</strong><p>顶部月亮/太阳按钮可切换模式。首次随系统设置，手动选择会在浏览器中记住。黑夜调暗界面、图纸空白格和网格，豆色与色号不变，导出和打印仍是白底。</p></li><li><strong>导出与制作</strong><p>PNG 包含完整网格、色号和用量清单。默认使用 MARD 221 色号。也可导入 CSV/JSON 或图片色卡，再按导入色卡匹配。屏幕颜色为参考，备豆请核对实物。</p></li></ol><div class="guide-foot"><svg><use href="#i-lock"/></svg>图片在本地处理；图片色卡首次识别需要联网。</div><button id="gotItBtn" class="primary-btn">开始我的创作</button></dialog>
     <dialog id="importDialog" class="import-dialog" aria-labelledby="importTitle">
     <div class="dialog-heading"><h2 id="importTitle">导入我的色卡</h2><button id="closeImportBtn" class="icon-btn" aria-label="关闭导入色卡">×</button></div>
     <p class="color-target">导入后，只从这张色卡里匹配图片，并显示你自己的色号。</p>
@@ -128,11 +130,11 @@
   <dialog id="sourcesDialog" aria-labelledby="sourcesTitle"><div class="dialog-heading"><h2 id="sourcesTitle">色卡与识别说明</h2><button id="closeSourcesBtn" class="icon-btn" aria-label="关闭色卡说明">×</button></div><div class="source-copy"><p>内置 MARD 221：A1–A26、B1–B32、C1–C29、D1–D26、E1–E24、F1–F25、G1–G21、H1–H23、M1–M15。色号和参考颜色固定绑定，不使用每张图临时生成的编号。</p><p>参考色值来自 <a href="https://github.com/maxcleme/beadcolors" target="_blank" rel="noopener noreferrer">maxcleme/beadcolors</a>（MIT；贡献者 Asher；版本 f97ff428）。数据为社区参考值，并非厂家校准 RGB。光照、显示器、材质和批次可能造成实物色差。</p><p>匹配使用 CIELAB 感知距离，颜色上限会进一步减少图纸用色。手动换色时色号与颜色一起替换，相同色号的用量合并。</p><p>图片色卡由 Tesseract.js 5.1.1 在本机识别字母数字色号，再对附近色块取样。文字识别、色块位置和照片白平衡都需要人工核对；本页不会把相近的 MARD 色号当成图片中识别出来的编号。文字模糊、中文色号、斜拍或复杂布局，请手动补充或使用 CSV/JSON。</p><p>图片与表格始终在本地处理，不会上传。网站仅在图片色卡识别时从本站下载组件；需要断网使用请使用单文件离线版。</p><p><a href="licenses/tesseract-5.1.1-ecb59495b4e4f4c5/third-party.txt" target="_blank" rel="noopener noreferrer">查看第三方许可证</a></p></div></dialog>
 
   <script type="application/json" id="ocr-config">{"mode": "website", "base": "vendor/ocr/tesseract-5.1.1-ecb59495b4e4f4c5/"}</script>
-  <script defer src="assets/a2031a5eff63335a/mard221.js"></script>
-  <script defer src="assets/a2031a5eff63335a/palettes.js"></script>
-  <script defer src="assets/a2031a5eff63335a/ocr-runtime.js"></script>
-  <script defer src="assets/a2031a5eff63335a/imports.js"></script>
-  <script defer src="assets/a2031a5eff63335a/project-store.js"></script>
-  <script defer src="assets/a2031a5eff63335a/app.js"></script>
+  <script defer src="assets/099ac542d9e3c6c4/mard221.js"></script>
+  <script defer src="assets/099ac542d9e3c6c4/palettes.js"></script>
+  <script defer src="assets/099ac542d9e3c6c4/ocr-runtime.js"></script>
+  <script defer src="assets/099ac542d9e3c6c4/imports.js"></script>
+  <script defer src="assets/099ac542d9e3c6c4/project-store.js"></script>
+  <script defer src="assets/099ac542d9e3c6c4/app.js"></script>
 </body>
 </html>
