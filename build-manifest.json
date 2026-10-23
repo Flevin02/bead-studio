@@ -1,64 +1,64 @@
 {
-  "buildId": "433465fc5874d85e",
+  "buildId": "1841ed97546982dd",
   "ocrVersion": "tesseract-5.1.1-ecb59495b4e4f4c5",
   "initialResources": [
     "index.html",
-    "assets/433465fc5874d85e/style.css",
-    "assets/433465fc5874d85e/mard221.js",
-    "assets/433465fc5874d85e/palettes.js",
-    "assets/433465fc5874d85e/ocr-runtime.js",
-    "assets/433465fc5874d85e/imports.js",
-    "assets/433465fc5874d85e/project-store.js",
-    "assets/433465fc5874d85e/app.js",
-    "assets/433465fc5874d85e/mascot-small.png",
-    "assets/433465fc5874d85e/favicon.png"
+    "assets/1841ed97546982dd/style.css",
+    "assets/1841ed97546982dd/mard221.js",
+    "assets/1841ed97546982dd/palettes.js",
+    "assets/1841ed97546982dd/ocr-runtime.js",
+    "assets/1841ed97546982dd/imports.js",
+    "assets/1841ed97546982dd/project-store.js",
+    "assets/1841ed97546982dd/app.js",
+    "assets/1841ed97546982dd/mascot-small.png",
+    "assets/1841ed97546982dd/favicon.png"
   ],
-  "initialBytes": 270380,
-  "offlineBytes": 9749489,
+  "initialBytes": 279161,
+  "offlineBytes": 9758270,
   "files": {
     ".nojekyll": {
       "bytes": 0,
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
-    "assets/433465fc5874d85e/app.js": {
-      "bytes": 87684,
-      "sha256": "ef952e76a1834d798a82dc570561c87bc3cd5b314f9a0efda5f4a04016c0f066"
+    "assets/1841ed97546982dd/app.js": {
+      "bytes": 89289,
+      "sha256": "c5a74f4e01e5a8109b76b5fb81ff433e8529de92f161141bdf665f88b0d51075"
     },
-    "assets/433465fc5874d85e/favicon.png": {
+    "assets/1841ed97546982dd/favicon.png": {
       "bytes": 4320,
       "sha256": "e8e41e768289bff4f33bdb0a9aaa245706493032bf26da6805f482ce2b84f009"
     },
-    "assets/433465fc5874d85e/imports.js": {
+    "assets/1841ed97546982dd/imports.js": {
       "bytes": 20862,
       "sha256": "e9ec0b3a92b7f82d9e032926c408d076c012984d56f3acae9979e51518eb0711"
     },
-    "assets/433465fc5874d85e/mard221.js": {
+    "assets/1841ed97546982dd/mard221.js": {
       "bytes": 7033,
       "sha256": "217be9ba35c0d7e9a62071a54c26fe00884dd16171f3494ad347900ecef0beaf"
     },
-    "assets/433465fc5874d85e/mascot-small.png": {
+    "assets/1841ed97546982dd/mascot-small.png": {
       "bytes": 32303,
       "sha256": "320d8445504de02b957a855f7b9360f9b3fcb44d4b9ce57f86352f95c7be4015"
     },
-    "assets/433465fc5874d85e/ocr-runtime.js": {
+    "assets/1841ed97546982dd/ocr-runtime.js": {
       "bytes": 4905,
       "sha256": "b66627a2a3b2e5118aaf23279a96660ed056ccf496e955ee75ce0da1471c695c"
     },
-    "assets/433465fc5874d85e/palettes.js": {
-      "bytes": 7578,
-      "sha256": "cdf60ab8c155ee319e7bbd0810123c7e6ae916987fcd8d1046703dd763f411dc"
+    "assets/1841ed97546982dd/palettes.js": {
+      "bytes": 14630,
+      "sha256": "7583fdce58b144ef4acf01ad8a4ed1491ca23805dd776ceceb0ed80748f677ea"
     },
-    "assets/433465fc5874d85e/project-store.js": {
+    "assets/1841ed97546982dd/project-store.js": {
       "bytes": 9054,
       "sha256": "f57e4d4fc762cb91031d2a73aef2f55d532554a0d19818fb40e606d81036a171"
     },
-    "assets/433465fc5874d85e/style.css": {
-      "bytes": 71065,
-      "sha256": "2e27101874f1ecdb842bf265dc8616de2807960356b7b1f8bb8b79002fabe3be"
+    "assets/1841ed97546982dd/style.css": {
+      "bytes": 71189,
+      "sha256": "ba05a70504a30d3297125f3e01036c6a84d66ea7e36ebbf7aa8e8f0d3470535c"
     },
     "index.html": {
       "bytes": 25576,
-      "sha256": "d3ae2bc24e89a2a26dc1b1e95740ff03b573c9dd8bb9a83104de7d596b801eed"
+      "sha256": "94af48cebd42d59232f9dc85b92015a7166c4118cd8dcc0990da31d83e560be5"
     },
     "licenses/tesseract-5.1.1-ecb59495b4e4f4c5/third-party.txt": {
       "bytes": 24597,
