@@ -120,9 +120,20 @@ window.BeadProjectStore = (() => {
         !text(record.fileName, 1024) || !text(record.fileMeta, 200) || typeof record.demo !== 'boolean') throw fail('corrupt', '原图记录不完整。');
     const { parameters: params, pattern, display, reading } = record;
     if (!params || !integer(params.longest, 16, 128) || !integer(params.maxColors, 4, 32) ||
+        (params.denoise !== undefined && typeof params.denoise !== 'boolean') ||
+        (params.dither !== undefined && !integer(params.dither, 0, 100)) ||
+        (params.background !== undefined && (typeof params.background !== 'object' || params.background === null ||
+          typeof params.background.remove !== 'boolean' || !finite(params.background.tolerance, 4, 40) || !integer(params.background.margin, 0, 10))) ||
         !pattern || !integer(pattern.width, 1, 128) || !integer(pattern.height, 1, 128) || typeof pattern.hasEdits !== 'boolean') throw fail('corrupt', '图纸参数不正确。');
     const scale = params.longest / Math.max(source.width, source.height);
-    if (pattern.width !== Math.max(1, Math.round(source.width * scale)) || pattern.height !== Math.max(1, Math.round(source.height * scale))) throw fail('corrupt', '原图与图纸尺寸不一致。');
+    // 主体裁剪的记录：网格来自裁剪矩形加留白，不等于整图等比缩放；矩形必须完整落在原图内。
+    const crop = pattern.crop;
+    if (crop !== undefined && (typeof crop !== 'object' || crop === null ||
+        !integer(crop.x, 0, source.width - 1) || !integer(crop.y, 0, source.height - 1) ||
+        !integer(crop.width, 1, source.width) || !integer(crop.height, 1, source.height) ||
+        crop.x + crop.width > source.width || crop.y + crop.height > source.height)) throw fail('corrupt', '裁剪区域超出原图。');
+    if (crop ? params.background?.remove !== true :
+      pattern.width !== Math.max(1, Math.round(source.width * scale)) || pattern.height !== Math.max(1, Math.round(source.height * scale))) throw fail('corrupt', '原图与图纸尺寸不一致。');
     if (!record.card || !text(record.card.name, 40) || typeof record.card.builtin !== 'boolean') throw fail('corrupt', '色卡信息不完整。');
     // 复用导入色卡的编号、HEX 与重复项校验，恢复时保持自定义色卡的实际内容。
     const colors = BeadPalettes.validate(record.card.colors);

@@ -85,10 +85,44 @@ window.BeadPalettes = (() => {
     return { name: String(name || filename.replace(/\.[^.]+$/, '')).slice(0, 40), colors: validate(rows) };
   }
 
+  /** CIEDE2000 色差（CIE 2001 标准感知色距）：比 Lab76 更贴近人眼，蓝紫与灰色区的错配明显减少。 */
+  function ciede2000(lab1, lab2) {
+    const rad = Math.PI / 180;
+    const c1 = Math.hypot(lab1[1], lab1[2]), c2 = Math.hypot(lab2[1], lab2[2]), cb = (c1 + c2) / 2;
+    const g = .5 * (1 - Math.sqrt(Math.pow(cb, 7) / (Math.pow(cb, 7) + Math.pow(25, 7))));
+    const a1 = lab1[1] * (1 + g), a2 = lab2[1] * (1 + g);
+    const p1 = Math.hypot(a1, lab1[2]), p2 = Math.hypot(a2, lab2[2]);
+    let h1 = Math.atan2(lab1[2], a1) / rad; if (h1 < 0) h1 += 360;
+    let h2 = Math.atan2(lab2[2], a2) / rad; if (h2 < 0) h2 += 360;
+    const dL = lab2[0] - lab1[0], dC = p2 - p1;
+    let dh = 0;
+    if (p1 * p2 !== 0) { dh = h2 - h1; if (dh > 180) dh -= 360; else if (dh < -180) dh += 360; }
+    const dH = 2 * Math.sqrt(p1 * p2) * Math.sin(dh / 2 * rad);
+    const lb = (lab1[0] + lab2[0]) / 2, cp = (p1 + p2) / 2;
+    let hp;
+    if (p1 * p2 !== 0) {
+      hp = (h1 + h2) / 2;
+      if (Math.abs(h1 - h2) > 180) { if (h1 + h2 < 360) hp += 180; else hp -= 180; }
+    } else hp = (h1 + h2) / 2;
+    const t = 1 - .17 * Math.cos((hp - 30) * rad) + .24 * Math.cos(2 * hp * rad) + .32 * Math.cos((3 * hp + 6) * rad) - .2 * Math.cos((4 * hp - 63) * rad);
+    const dT = 30 * Math.exp(-Math.pow((hp - 275) / 25, 2));
+    const rc = 2 * Math.sqrt(Math.pow(cp, 7) / (Math.pow(cp, 7) + Math.pow(25, 7)));
+    const sl = 1 + .015 * Math.pow(lb - 50, 2) / Math.sqrt(20 + Math.pow(lb - 50, 2));
+    const sc = 1 + .045 * cp, sh = 1 + .015 * cp * t;
+    const rt = -Math.sin(2 * dT * rad) * rc;
+    const x = dC / sc, y = dH / sh;
+    return Math.sqrt(Math.pow(dL / sl, 2) + x * x + y * y - rt * x * y);
+  }
+
   /** 返回指定 RGB 在色卡中的最近色；相同距离保留色卡顺序，结果可重复。 */
   function nearest(rgb, colors) {
     const lab = toLab(rgb);
-    return colors.reduce((best, color) => distance(lab, color.lab) < distance(lab, best.lab) ? color : best, colors[0]);
+    let best = colors[0], bestDelta = ciede2000(lab, best.lab);
+    for (let i = 1; i < colors.length; i++) {
+      const delta = ciede2000(lab, colors[i].lab);
+      if (delta < bestDelta) { best = colors[i]; bestDelta = delta; }
+    }
+    return best;
   }
 
   /**
@@ -118,30 +152,21 @@ window.BeadPalettes = (() => {
 
   /**
    * 将有界 RGBA 帧按真实面积交叠取样为 width × height 个格子，返回 RGB 或留空 null。
-   * image 来自浏览器解码的固定源帧；width、height 为已校验的目标图纸尺寸。
-   * smoothed 可提供同源的目标尺寸平滑帧；连续不透明图沿用它，避免面积取样增加照片纹理杂豆。
+   * image 来自本页自算的取样帧；width、height 为已校验的目标图纸尺寸。
    * 清晰像素结构使用面积主色，其余使用 alpha 加权均色；覆盖率不足一半仍留空。
    * 同格同时存在透明背景和不透明前景时分离边缘覆盖率与豆色；均匀半透明仍按白底合成。
+   * demote 标记的像素（背景清理的贴边混色残带）只占覆盖率与去留，不参与配色与投票：
+   * 格子里还有可信像素时豆色取自可信像素，只剩残带的格子留空。
    */
-  function sample(image, width, height, smoothed = null) {
+  function sample(image, width, height, demote = null) {
     const { data, width: sw, height: sh } = image;
     // 仅在结构证据充分时保留离散主色；不要求用户选择图片模式。
     const crisp = hasPixelStructure(image);
-    if (smoothed && !crisp) {
-      let opaque = true;
-      for (let i = 3; i < data.length; i += 4) if (data[i] < 255) { opaque = false; break; }
-      if (opaque) {
-        const pixels = [], frame = smoothed.data;
-        // 照片保持既有平滑强度；新的限色优化独立降低配色误差，不额外锐化细碎纹理。
-        for (let i = 0; i < frame.length; i += 4) pixels.push([frame[i], frame[i + 1], frame[i + 2]]);
-        return pixels;
-      }
-    }
     const pixels = [], sx = sw / width, sy = sh / height;
     for (let y = 0; y < height; y++) {
       for (let x = 0; x < width; x++) {
         const left = x * sx, right = (x + 1) * sx, top = y * sy, bottom = (y + 1) * sy;
-        let alpha = 0, red = 0, green = 0, blue = 0, minAlpha = 255, maxAlpha = 0;
+        let alpha = 0, red = 0, green = 0, blue = 0, colorWeight = 0, minAlpha = 255, maxAlpha = 0;
         const votes = crisp ? new Map() : null;
         // 边缘源像素只贡献交叠面积，非整数缩放不会把边界格整颗重复计入。
         for (let iy = Math.floor(top); iy < Math.ceil(bottom) && iy < sh; iy++) {
@@ -151,7 +176,9 @@ window.BeadPalettes = (() => {
             if (area <= 1e-9) continue;
             const i = (iy * sw + ix) * 4, a = data[i + 3], weight = area * a / 255;
             minAlpha = Math.min(minAlpha, a); maxAlpha = Math.max(maxAlpha, a);
-            alpha += weight; red += data[i] * weight; green += data[i + 1] * weight; blue += data[i + 2] * weight;
+            alpha += weight;
+            if (demote && demote[iy * sw + ix]) continue;
+            colorWeight += weight; red += data[i] * weight; green += data[i + 1] * weight; blue += data[i + 2] * weight;
             if (votes && weight) {
               const key = (data[i] << 16) | (data[i + 1] << 8) | data[i + 2];
               // 像素画按覆盖面积投票；同量保留源图扫描顺序，使结果可重复。
@@ -162,15 +189,17 @@ window.BeadPalettes = (() => {
         const coverage = alpha / (sx * sy);
         if (coverage < .5 - 1e-9 || !alpha) { pixels.push(null); continue; }
         if (votes) {
+          if (!votes.size) { pixels.push(null); continue; }
           let winner = 0, weight = -1;
           for (const [key, value] of votes) if (value > weight) { winner = key; weight = value; }
           // 离散像素不混色，透明占有率只决定是否放豆，不将边缘豆色掺白。
           pixels.push([winner >> 16, (winner >> 8) & 255, winner & 255]);
         } else {
+          if (!colorWeight) { pixels.push(null); continue; }
           const edge = minAlpha <= 16 && maxAlpha >= 250;
           const opacity = edge ? 1 : coverage;
           // 只移除有透明背景证据的边缘白晕，保留有意半透明图片的白底视觉语义。
-          pixels.push([red, green, blue].map(value => Math.round(value / alpha * opacity + 255 * (1 - opacity))));
+          pixels.push([red, green, blue].map(value => Math.round(value / colorWeight * opacity + 255 * (1 - opacity))));
         }
       }
     }
@@ -180,10 +209,12 @@ window.BeadPalettes = (() => {
   /**
    * 把 RGB/null 格子映射为真实色卡；maxColors 为颜色上限，colors 为已校验的完整色卡。
    * 先保留原贪心色集作为起点，再做至多三轮受限色卡优化，降低原始格子的加权 Lab 平方误差。
-   * 每轮只替换能降低所属格子总误差的色号；不清除孤立格，也不合并或改写图形轮廓。
+   * 最终逐格映射与改色建议使用 CIEDE2000（感知更准）；选色与三轮优化仍用 Lab76（快一个量级）。
+   * dither ∈ (0,1] 时按 Floyd–Steinberg 在 Lab 空间做误差扩散（需传图纸宽高）：
+   * 相邻豆混出色卡没有的过渡色，空格阻断误差传播，强度按比例缩放误差；0 为关闭。
    * 返回同一份结果的 palette/cells，编号、RGB、数量及内部索引始终绑定；输入及旧作品不变。
    */
-  function quantize(pixels, maxColors, colors) {
+  function quantize(pixels, maxColors, colors, dither = 0, width = 0, height = 0) {
     const histogram = new Map();
     for (const rgb of pixels) {
       if (!rgb) continue;
@@ -242,14 +273,150 @@ window.BeadPalettes = (() => {
     }
     const counts = new Map(), lookup = new Map();
     for (const point of points) {
-      const best = selected.reduce((a, b) => distance(point.lab, b.lab) < distance(point.lab, a.lab) ? b : a);
+      // 最终映射用 CIEDE2000：相同距离的并列保持色卡顺序，结果可重复。
+      let best = selected[0], bestDelta = ciede2000(point.lab, best.lab);
+      for (let i = 1; i < selected.length; i++) {
+        const delta = ciede2000(point.lab, selected[i].lab);
+        if (delta < bestDelta) { best = selected[i]; bestDelta = delta; }
+      }
       lookup.set(point.rgb.join(','), best.code);
       counts.set(best.code, (counts.get(best.code) || 0) + point.weight);
     }
     const palette = selected.filter(c => counts.has(c.code)).map(c => ({ ...c, count: counts.get(c.code) })).sort((a, b) => b.count - a.count);
     const indices = new Map(palette.map((c, index) => [c.code, index]));
-    return { palette, cells: pixels.map(rgb => rgb ? indices.get(lookup.get(rgb.join(','))) : -1) };
+    if (!(dither > 0) || !width || !height || width * height !== pixels.length) {
+      return { palette, cells: pixels.map(rgb => rgb ? indices.get(lookup.get(rgb.join(','))) : -1) };
+    }
+    // Floyd–Steinberg 误差扩散：每格取最近色后，误差按 7/16 右、3/16 左下、5/16 下、1/16 右下
+    // 传给未处理的非空邻居；空格（背景）阻断传播。误差乘 dither 控制强度，1 为标准 FS。
+    const labCache = new Map();
+    const cellLab = rgb => {
+      const key = rgb.join(',');
+      let lab = labCache.get(key);
+      if (!lab) { lab = toLab(rgb); labCache.set(key, lab); }
+      return lab;
+    };
+    const errors = new Float32Array(width * height * 3);
+    const cells = new Array(width * height);
+    const ditherCounts = new Map();
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
+        const i = y * width + x, rgb = pixels[i];
+        if (!rgb) { cells[i] = -1; continue; }
+        const lab = cellLab(rgb);
+        const target = [lab[0] + errors[i * 3], lab[1] + errors[i * 3 + 1], lab[2] + errors[i * 3 + 2]];
+        let pick = 0, pickDelta = ciede2000(target, palette[0].lab);
+        for (let p = 1; p < palette.length; p++) {
+          const delta = ciede2000(target, palette[p].lab);
+          if (delta < pickDelta) { pick = p; pickDelta = delta; }
+        }
+        cells[i] = pick;
+        ditherCounts.set(palette[pick].code, (ditherCounts.get(palette[pick].code) || 0) + 1);
+        const e0 = (target[0] - palette[pick].lab[0]) * dither;
+        const e1 = (target[1] - palette[pick].lab[1]) * dither;
+        const e2 = (target[2] - palette[pick].lab[2]) * dither;
+        const push = (nx, ny, weight) => {
+          if (nx < 0 || ny < 0 || nx >= width || ny >= height) return;
+          const j = ny * width + nx;
+          if (!pixels[j]) return;
+          errors[j * 3] += e0 * weight; errors[j * 3 + 1] += e1 * weight; errors[j * 3 + 2] += e2 * weight;
+        };
+        push(x + 1, y, 7 / 16); push(x - 1, y + 1, 3 / 16); push(x, y + 1, 5 / 16); push(x + 1, y + 1, 1 / 16);
+      }
+    }
+    // 扩散后用量与色号成员都会变，重建调色板并把格子索引重映射到新顺序。
+    const dithered = palette.filter(c => ditherCounts.has(c.code)).map(c => ({ ...c, count: ditherCounts.get(c.code) })).sort((a, b) => b.count - a.count);
+    const remap = new Map(dithered.map((c, index) => [c.code, index]));
+    return { palette: dithered, cells: cells.map(index => index < 0 ? -1 : remap.get(palette[index].code)) };
   }
 
-  return { normalizeHex, toLab, distance, validate, parse, nearest, sample, quantize };
+  /**
+   * 清理量化后的格子：先修正孤格，再把不超过 minArea 格的连通色块并进接触最多的邻色。
+   * 只改写格子索引并重建用量，不新增色号、不改动留空区域；调用方关闭该选项时直接跳过。
+   */
+  function refine(result, width, height, minArea = 1) {
+    const { palette } = result, grid = result.cells.slice();
+    if (!palette.length || grid.length !== width * height) return result;
+    // 第一遍：同色邻居不足两格、四周又被另一色几乎占满的格子视为杂点，改成该主色。
+    // 替换会改变邻域统计，所以按轮推进；主色扩展后，贴着边缘的杂点在第二轮一并收敛。
+    for (let round = 0; round < 2; round++) {
+      const source = grid.slice();
+      let changed = false;
+      for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+          const index = source[y * width + x];
+          if (index < 0) continue;
+          const votes = new Map();
+          let same = 0, count = 0;
+          for (let dy = -1; dy <= 1; dy++) {
+            for (let dx = -1; dx <= 1; dx++) {
+              const nx = x + dx, ny = y + dy;
+              // 留空格不投票，透明边界不能当作颜色证据把边缘豆拉向深色。
+              if ((!dx && !dy) || nx < 0 || ny < 0 || nx >= width || ny >= height) continue;
+              const value = source[ny * width + nx];
+              if (value < 0) continue;
+              count++;
+              votes.set(value, (votes.get(value) || 0) + 1);
+              if (value === index) same++;
+            }
+          }
+          // 两格以上同色说明是有意的细节，例如眼睛、装饰点，保留不动。
+          if (same > 1 || count < 5) continue;
+          let winner = -1, top = 0;
+          for (const [value, weight] of votes) if (weight > top) { winner = value; top = weight; }
+          if (winner >= 0 && top > same && top >= count - 1) { grid[y * width + x] = winner; changed = true; }
+        }
+      }
+      if (!changed) break;
+    }
+    // 第二遍：把零碎小色块并进边界接触最长的邻色，修掉毛边和二连格；同长时取颜色更接近的。
+    const visited = new Uint8Array(grid.length), stack = [], group = [];
+    for (let start = 0; start < grid.length; start++) {
+      const index = grid[start];
+      if (visited[start] || index < 0) continue;
+      group.length = 0; stack.push(start); visited[start] = 1;
+      while (stack.length) {
+        const cell = stack.pop(); group.push(cell);
+        const x = cell % width;
+        const around = [x > 0 ? cell - 1 : -1, x < width - 1 ? cell + 1 : -1, cell >= width ? cell - width : -1, cell < grid.length - width ? cell + width : -1];
+        for (const next of around) if (next >= 0 && !visited[next] && grid[next] === index) { visited[next] = 1; stack.push(next); }
+      }
+      if (group.length > minArea) continue;
+      const borders = new Map();
+      let red = 0, green = 0, blue = 0;
+      for (const cell of group) {
+        const rgb = palette[index].rgb;
+        red += rgb[0]; green += rgb[1]; blue += rgb[2];
+        const x = cell % width;
+        const around = [x > 0 ? cell - 1 : -1, x < width - 1 ? cell + 1 : -1, cell >= width ? cell - width : -1, cell < grid.length - width ? cell + width : -1];
+        for (const next of around) {
+          if (next < 0) continue;
+          const value = grid[next];
+          if (value >= 0 && value !== index) borders.set(value, (borders.get(value) || 0) + 1);
+        }
+      }
+      // 四周只有留空格的色块保持原样，那是图形的真实外沿。
+      if (!borders.size) continue;
+      const mean = toLab([red / group.length, green / group.length, blue / group.length]);
+      let target = -1, length = 0;
+      for (const [value, weight] of borders) {
+        if (weight > length || (weight === length && target >= 0 && distance(mean, palette[value].lab) < distance(mean, palette[target].lab))) {
+          target = value; length = weight;
+        }
+      }
+      for (const cell of group) grid[cell] = target;
+    }
+    // 用量按清理后的格子重算，被清理干净的色号一起退出清单，索引重新绑定。
+    const counts = new Array(palette.length).fill(0);
+    for (const index of grid) if (index >= 0) counts[index]++;
+    const kept = palette.map((color, index) => ({ color, count: counts[index] }))
+      .filter(item => item.count > 0).sort((a, b) => b.count - a.count);
+    const lookup = new Map(kept.map((item, index) => [item.color.code, index]));
+    return {
+      palette: kept.map(({ color, count }) => ({ ...color, count })),
+      cells: grid.map(index => index < 0 ? -1 : lookup.get(palette[index].code))
+    };
+  }
+
+  return { normalizeHex, toLab, distance, ciede2000, validate, parse, nearest, sample, refine, quantize };
 })();
