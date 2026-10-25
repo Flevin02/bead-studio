@@ -13,7 +13,7 @@
     "assets/cb0b0e4ed061c0f4/mascot-small.png",
     "assets/cb0b0e4ed061c0f4/favicon.png"
   ],
-  "initialBytes": 281698,
+  "initialBytes": 284833,
   "offlineBytes": 9760807,
   "files": {
     ".nojekyll": {
@@ -21,8 +21,8 @@
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     "assets/cb0b0e4ed061c0f4/app.js": {
-      "bytes": 91372,
-      "sha256": "428677723f0106c3400bf65c558a5f7b1e83cd0ea45dc0946732fca60834003f"
+      "bytes": 93877,
+      "sha256": "c521ccc7327695786afd175f01ebfb3ac5f5c63f906405a53d9e6cc0913b9b15"
     },
     "assets/cb0b0e4ed061c0f4/favicon.png": {
       "bytes": 4320,
@@ -49,16 +49,16 @@
       "sha256": "7583fdce58b144ef4acf01ad8a4ed1491ca23805dd776ceceb0ed80748f677ea"
     },
     "assets/cb0b0e4ed061c0f4/project-store.js": {
-      "bytes": 9054,
-      "sha256": "f57e4d4fc762cb91031d2a73aef2f55d532554a0d19818fb40e606d81036a171"
+      "bytes": 9279,
+      "sha256": "d4638efa4021f5f257663d5de237ea86c09851ee8f68dbed27f4649c3f51dde4"
     },
     "assets/cb0b0e4ed061c0f4/style.css": {
       "bytes": 71643,
       "sha256": "2dbde3d77b912a5b3bd5bd13dcd930b572015bed565ce1dd4f496c64f3555369"
     },
     "index.html": {
-      "bytes": 25576,
-      "sha256": "c42cbf3e90138fbb38c9e34641f99d30b52a12418bf219b00caa1105d8279cd9"
+      "bytes": 25981,
+      "sha256": "2177ceda6f9f0f70cf4c9d5e1c71d3e5bb2542374eb453820144c5fd12343bb0"
     },
     "licenses/tesseract-5.1.1-ecb59495b4e4f4c5/third-party.txt": {
       "bytes": 24597,

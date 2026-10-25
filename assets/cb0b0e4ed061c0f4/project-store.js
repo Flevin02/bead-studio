@@ -132,6 +132,7 @@ window.BeadProjectStore = (() => {
     const automatic = validatePattern(pattern.autoResult, pattern.width, pattern.height, colors, params.maxColors);
     if (current.cells.some((cell, index) => (cell < 0) !== (automatic.cells[index] < 0))) throw fail('corrupt', '自动基线的留空区域不一致。');
     if (!display || ['mirrored', 'grid', 'codes', 'beads'].some(key => typeof display[key] !== 'boolean') ||
+        (display.guides !== undefined && typeof display.guides !== 'boolean') ||
         !reading || !['design', 'beading'].includes(reading.mode) || !finite(reading.zoom, .5, 4) ||
         !reading.center || !finite(reading.center.x, 0, 1) || !finite(reading.center.y, 0, 1) ||
         reading.activeCell !== null && (!reading.activeCell || !integer(reading.activeCell.x, 0, pattern.width - 1) || !integer(reading.activeCell.y, 0, pattern.height - 1)) ||

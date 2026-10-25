@@ -145,7 +145,7 @@
       card: { name: state.card.name, builtin: !!state.card.builtin, colors: state.card.colors.map(({ code, hex, name }) => ({ code, hex, name })) },
       parameters: { longest: Number($('sizeRange').value), maxColors: Number($('colorRange').value) },
       pattern: { ...result(state), width: state.width, height: state.height, hasEdits: state.hasEdits, autoResult: result(state.autoResult) },
-      display: { mirrored: state.mirrored, grid: $('gridCheck').checked, codes: $('codeCheck').checked, beads: $('beadCheck').checked },
+      display: { mirrored: state.mirrored, grid: $('gridCheck').checked, guides: $('guideCheck').checked, codes: $('codeCheck').checked, beads: $('beadCheck').checked },
       reading: { mode: state.mode, zoom: state.zoom, center: readingCenter(), activeCell: state.activeCell ? { ...state.activeCell } : null,
         selectedCode: state.selected === null ? null : state.palette[state.selected].code }
     };
@@ -250,6 +250,8 @@
         selected: record.reading.selectedCode === null ? null : checked.current.palette.findIndex(c => c.code === record.reading.selectedCode) });
       $('sizeRange').value = record.parameters.longest; $('colorRange').value = record.parameters.maxColors;
       for (const [id, key] of [['gridCheck', 'grid'], ['codeCheck', 'codes'], ['beadCheck', 'beads']]) $(id).checked = record.display[key];
+      // 旧作品没有辅助线字段，按默认开启恢复，不当作损坏记录。
+      $('guideCheck').checked = record.display.guides !== false;
       $('fileName').textContent = record.fileName; $('fileMeta').textContent = record.fileMeta;
       $('mobileSourceAction').textContent = record.demo ? '上传图片' : '更换图片';
       // 缩略图继续使用小图，完整透明帧保留在Canvas和IndexedDB中。
@@ -732,7 +734,7 @@
   }
 
   /** 绘制完整图纸。预览与PNG共用同一绘制路径，导出不受缩放和高亮影响。 */
-  function drawPattern(ctx, { x = MARGIN, y = MARGIN, cell = CELL, codes = false, grid = true, beads = false, highlight = null, dark = false, isolateColor = false } = {}) {
+  function drawPattern(ctx, { x = MARGIN, y = MARGIN, cell = CELL, codes = false, grid = true, guides = true, beads = false, highlight = null, dark = false, isolateColor = false } = {}) {
     const width = state.width * cell, height = state.height * cell;
     // 深色仅用于屏幕环境；调用方未指定 dark 时，导出和打印保持白底及原始豆色。
     ctx.fillStyle = dark ? '#191C25' : '#FFFFFF';
@@ -777,13 +779,51 @@
         ctx.moveTo(x, y + row * cell); ctx.lineTo(x + width, y + row * cell); ctx.stroke();
       }
     }
-    ctx.fillStyle = dark ? '#B8ADC8' : '#A69BAE'; ctx.font = `10px ${FONT}`;
+
+    // 分区辅助线：每5格一条主线、正中一条虚线对折线，配合四边刻度方便打印后数格对位。
+    if (guides) {
+      ctx.strokeStyle = dark ? '#B7ABCE73' : '#7B6A9A8F';
+      ctx.lineWidth = 1.8;
+      for (let col = 5; col < state.width; col += 5) {
+        ctx.beginPath(); ctx.moveTo(x + col * cell, y); ctx.lineTo(x + col * cell, y + height); ctx.stroke();
+      }
+      for (let row = 5; row < state.height; row += 5) {
+        ctx.beginPath(); ctx.moveTo(x, y + row * cell); ctx.lineTo(x + width, y + row * cell); ctx.stroke();
+      }
+      // 外框与主线同色，避免边缘比内部5格线还细。
+      ctx.strokeRect(x, y, width, height);
+      // 主线已落在正中的尺寸不再补虚线，避免同一条线一半实一半虚。
+      ctx.save();
+      ctx.setLineDash([cell * .4, cell * .3]);
+      ctx.lineWidth = 1.2;
+      ctx.strokeStyle = dark ? '#C0B2E0A6' : '#7755CC73';
+      if ((state.width / 2) % 5 !== 0) {
+        ctx.beginPath(); ctx.moveTo(x + width / 2, y); ctx.lineTo(x + width / 2, y + height); ctx.stroke();
+      }
+      if ((state.height / 2) % 5 !== 0) {
+        ctx.beginPath(); ctx.moveTo(x, y + height / 2); ctx.lineTo(x + width, y + height / 2); ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    // 刻度数字每5格一个；10的倍数加粗并用强调色，四边都标，任意一边起拼都能对上行列。
     ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    const label = (text, lx, ly, strong) => {
+      ctx.fillStyle = strong ? (dark ? '#CFC3E8' : '#6E5C88') : (dark ? '#B8ADC8' : '#A69BAE');
+      ctx.font = `${strong ? '600 ' : ''}10px ${FONT}`;
+      ctx.fillText(text, lx, ly);
+    };
     for (let col = 0; col < state.width; col++) {
-      if (col === 0 || (col + 1) % 5 === 0) ctx.fillText(col + 1, x + (col + .5) * cell, y - 14);
+      if (col !== 0 && (col + 1) % 5 !== 0) continue;
+      const strong = (col + 1) % 10 === 0, cx = x + (col + .5) * cell;
+      label(col + 1, cx, y - 14, strong);
+      if (guides) label(col + 1, cx, y + height + 14, strong);
     }
     for (let row = 0; row < state.height; row++) {
-      if (row === 0 || (row + 1) % 5 === 0) ctx.fillText(row + 1, x - 15, y + (row + .5) * cell);
+      if (row !== 0 && (row + 1) % 5 !== 0) continue;
+      const strong = (row + 1) % 10 === 0, cy = y + (row + .5) * cell;
+      label(row + 1, x - 15, cy, strong);
+      if (guides) label(row + 1, x + width + 15, cy, strong);
     }
   }
 
@@ -803,7 +843,7 @@
       0, canvas.height / (state.height * CELL + MARGIN * 2), 0, 0);
     // 在目标分辨率直接绘制文字和网格，切色及取消先覆盖完整底色，不放大旧位图。
     drawPattern(ctx, {
-      grid: $('gridCheck').checked, codes: $('codeCheck').checked,
+      grid: $('gridCheck').checked, codes: $('codeCheck').checked, guides: $('guideCheck').checked,
       beads: $('beadCheck').checked, highlight: state.selected,
       dark: document.documentElement.dataset.theme === 'dark', isolateColor: state.mode === 'beading'
     });
@@ -1157,14 +1197,15 @@
     }
   }
 
-  /** 直接绘制高清PNG与打印页：默认宽高各2倍，最长边4096像素，保持完整原色和用量。 */
+  /** 直接绘制高清PNG与打印页：默认宽高各2倍，最长边4096像素，保持完整原色、辅助线、色号和用量。 */
   function createExportCanvas() {
     const gridWidth = state.width * CELL, gridHeight = state.height * CELL;
     const gridArea = Math.max(gridWidth, 480);
     const legendWidth = 220;
     const legendHeight = 100 + state.palette.length * 43;
     const width = gridArea + legendWidth + 100;
-    const height = Math.max(gridHeight + 180, legendHeight + 180, 520);
+    // 图纸下方留出四边刻度的位置，底部数字不会和色卡说明叠在一起。
+    const height = Math.max(gridHeight + 200, legendHeight + 180, 520);
     const scale = Math.min(2, MAX_CANVAS_EDGE / Math.max(width, height));
     const sheet = document.createElement('canvas');
     sheet.width = Math.round(width * scale);
@@ -1181,7 +1222,8 @@
     const colorCount = state.palette.length;
     ctx.fillText(`${state.width} × ${state.height} 格  |  ${direction}  |  ${total} 颗豆子  |  ${colorCount} 种颜色`, 34, 70);
     const gx = 36 + (gridArea - gridWidth) / 2, gy = 120;
-    drawPattern(ctx, { x: gx, y: gy, cell: CELL, grid: true, codes: true, beads: false });
+    // 导出与打印始终带分区辅助线和四边刻度，屏幕上的显示开关只影响预览。
+    drawPattern(ctx, { x: gx, y: gy, cell: CELL, grid: true, guides: true, codes: true, beads: false });
     const lx = gridArea + 72;
     ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
     ctx.fillStyle = '#584561'; ctx.font = `600 15px ${FONT}`;
@@ -1227,8 +1269,10 @@
       link.download = filename;
       link.href = url; document.body.append(link); link.click(); link.remove();
       setTimeout(() => URL.revokeObjectURL(url), 30000);
-      toast('图纸已导出，包含色号和完整用量清单。');
+      toast('图纸已导出，包含辅助线、色号和完整用量清单。');
     } catch (error) {
+      // 页面已给出可操作的提示，同时把真实原因留在控制台，方便按环境排查编码失败。
+      console.error('图纸导出失败', error);
       toast('图纸导出失败，请降低精细度后重新导出。', true);
     } finally {
       // 编码失败也走同一复位链；不显示“保存到设备成功”等无法由网页确认的状态。
@@ -1397,7 +1441,7 @@
   document.querySelectorAll('[data-size]').forEach(button => button.addEventListener('click', () => {
     $('sizeRange').value = button.dataset.size; flushPending(); regenerate();
   }));
-  for (const id of ['gridCheck', 'codeCheck', 'beadCheck']) $(id).addEventListener('change', () => { flushPending(); render(); markProjectChange(true); });
+  for (const id of ['gridCheck', 'guideCheck', 'codeCheck', 'beadCheck']) $(id).addEventListener('change', () => { flushPending(); render(); markProjectChange(true); });
   $('normalBtn').addEventListener('click', () => { flushPending(); setDirection(false); });
   $('mirrorBtn').addEventListener('click', () => { flushPending(); setDirection(true); });
   $('clearHighlightBtn').addEventListener('click', () => { state.selected = null; updateHighlight(); markProjectChange(); });
