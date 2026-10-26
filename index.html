@@ -16,8 +16,8 @@
       document.documentElement.dataset.themeSource = manual ? 'manual' : 'system';
     })();
   </script>
-  <link rel="stylesheet" href="assets/c174eba3897bdccc/style.css">
-<link rel="icon" type="image/png" href="assets/c174eba3897bdccc/favicon.png">
+  <link rel="stylesheet" href="assets/087ee1c45ddea7bd/style.css">
+<link rel="icon" type="image/png" href="assets/087ee1c45ddea7bd/favicon.png">
 </head>
 <body>
   <svg class="svg-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
@@ -51,7 +51,7 @@
     <symbol id="i-stack" viewBox="0 0 24 24"><rect x="7" y="6" width="14" height="14" rx="3"/><path d="M17 6V4a2 2 0 0 0-2-2H5a3 3 0 0 0-3 3v10a2 2 0 0 0 2 2h3"/></symbol>
   </defs></svg>
   <header class="topbar">
-    <a class="brand" href="#" aria-label="我勒个豆首页"><span class="brand-mark"><img src="assets/c174eba3897bdccc/mascot-small.png" alt="" width="48" height="48" draggable="false"></span><span class="brand-name">我勒个豆<span>拼豆图纸工坊</span></span></a>
+    <a class="brand" href="#" aria-label="我勒个豆首页"><span class="brand-mark"><img src="assets/087ee1c45ddea7bd/mascot-small.png" alt="" width="48" height="48" draggable="false"></span><span class="brand-name">我勒个豆<span>拼豆图纸工坊</span></span></a>
     <section class="project-bar" aria-label="作品与操作模式">
       <div class="project-actions"><div class="mode-switch" role="group" aria-label="操作模式"><button id="designModeBtn" class="active" aria-pressed="true">制图</button><button id="beadingModeBtn" aria-pressed="false">拼豆</button></div><button id="readingExportBtn" class="primary-btn reading-only export-button" aria-label="导出图纸"><span class="export-icon-slot" aria-hidden="true"><svg class="export-icon"><use href="#i-download"/></svg></span><span class="export-label">导出图纸</span><span class="export-format">PNG</span></button><button id="mobileExportBtn" class="primary-btn export-button" aria-label="导出图纸"><span class="export-icon-slot" aria-hidden="true"><svg class="export-icon"><use href="#i-download"/></svg></span><span class="export-label">导出图纸</span></button></div>
       <div class="save-box" id="saveBox" hidden><div class="save-line"><span id="saveStatus" role="status" aria-live="polite">正在读取本地作品…</span><button id="retrySaveBtn" class="text-btn" hidden>重试保存</button><button id="retryRestoreBtn" class="text-btn" hidden>重试恢复</button><button id="reloadProjectBtn" class="text-btn" hidden>重新载入</button><button id="newProjectBtn" class="text-btn" hidden>开始新作品</button></div></div>
@@ -161,16 +161,16 @@
   <dialog id="sourcesDialog" aria-labelledby="sourcesTitle"><div class="dialog-heading"><h2 id="sourcesTitle">色卡与识别说明</h2><button id="closeSourcesBtn" class="icon-btn" aria-label="关闭色卡说明">×</button></div><div class="source-copy"><p>内置 MARD 221：A1–A26、B1–B32、C1–C29、D1–D26、E1–E24、F1–F25、G1–G21、H1–H23、M1–M15。色号和参考颜色固定绑定，不使用每张图临时生成的编号。</p><p>参考色值来自 <a href="https://github.com/maxcleme/beadcolors" target="_blank" rel="noopener noreferrer">maxcleme/beadcolors</a>（MIT；贡献者 Asher；版本 f97ff428）。数据为社区参考值，并非厂家校准 RGB。光照、显示器、材质和批次可能造成实物色差。</p><p>其他内置品牌：Artkal S 199 色、Perler 103 色、Hama Midi 92 色，使用同一仓库固定提交 f97ff4283d03 的原始 CSV，保留各品牌真实编号（包括前导零）。贡献者详见源文件，许可证为 MIT；不将跨品牌编号对应表当作实测颜色。</p><p>匹配使用 CIELAB 感知距离，颜色上限会进一步减少图纸用色。手动换色时色号与颜色一起替换，相同色号的用量合并。</p><p>图片色卡由 Tesseract.js 5.1.1 在本机识别字母数字色号，再对附近色块取样。文字识别、色块位置和照片白平衡都需要人工核对；本页不会把相近的 MARD 色号当成图片中识别出来的编号。文字模糊、中文色号、斜拍或复杂布局，请手动补充或使用 CSV/JSON。</p><p>图片与表格始终在本地处理，不会上传。网站仅在图片色卡识别时从本站下载组件；需要断网使用请使用单文件离线版。</p><p><a href="licenses/tesseract-5.1.1-ecb59495b4e4f4c5/third-party.txt" target="_blank" rel="noopener noreferrer">查看第三方许可证</a></p></div></dialog>
 
 
-  <script type="application/json" id="generation-config">{"worker": "assets/c174eba3897bdccc/generation-worker.js"}</script>
+  <script type="application/json" id="generation-config">{"worker": "assets/087ee1c45ddea7bd/generation-worker.js"}</script>
   <script type="application/json" id="ocr-config">{"mode": "website", "base": "vendor/ocr/tesseract-5.1.1-ecb59495b4e4f4c5/"}</script>
-  <script defer src="assets/c174eba3897bdccc/mard221.js"></script>
-  <script defer src="assets/c174eba3897bdccc/builtin-cards.js"></script>
-  <script defer src="assets/c174eba3897bdccc/palettes.js"></script>
-  <script defer src="assets/c174eba3897bdccc/engine.js"></script>
-  <script defer src="assets/c174eba3897bdccc/ocr-runtime.js"></script>
-  <script defer src="assets/c174eba3897bdccc/imports.js"></script>
-  <script defer src="assets/c174eba3897bdccc/project-store.js"></script>
+  <script defer src="assets/087ee1c45ddea7bd/mard221.js"></script>
+  <script defer src="assets/087ee1c45ddea7bd/builtin-cards.js"></script>
+  <script defer src="assets/087ee1c45ddea7bd/palettes.js"></script>
+  <script defer src="assets/087ee1c45ddea7bd/engine.js"></script>
+  <script defer src="assets/087ee1c45ddea7bd/ocr-runtime.js"></script>
+  <script defer src="assets/087ee1c45ddea7bd/imports.js"></script>
+  <script defer src="assets/087ee1c45ddea7bd/project-store.js"></script>
   <!-- 入口以模块加载：core/ 与 features/ 按依赖自动引入，均为同目录静态文件。 -->
-  <script type="module" src="assets/c174eba3897bdccc/app.js"></script>
+  <script type="module" src="assets/087ee1c45ddea7bd/app.js"></script>
 </body>
 </html>
