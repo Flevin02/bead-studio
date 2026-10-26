@@ -1,149 +1,149 @@
 {
-  "buildId": "087ee1c45ddea7bd",
+  "buildId": "5ebb9cdd69fdba0d",
   "ocrVersion": "tesseract-5.1.1-ecb59495b4e4f4c5",
   "initialResources": [
     "index.html",
-    "assets/087ee1c45ddea7bd/style.css",
-    "assets/087ee1c45ddea7bd/generation-worker.js",
-    "assets/087ee1c45ddea7bd/mard221.js",
-    "assets/087ee1c45ddea7bd/builtin-cards.js",
-    "assets/087ee1c45ddea7bd/palettes.js",
-    "assets/087ee1c45ddea7bd/engine.js",
-    "assets/087ee1c45ddea7bd/ocr-runtime.js",
-    "assets/087ee1c45ddea7bd/imports.js",
-    "assets/087ee1c45ddea7bd/project-store.js",
-    "assets/087ee1c45ddea7bd/core/state.js",
-    "assets/087ee1c45ddea7bd/features/bead-preview.js",
-    "assets/087ee1c45ddea7bd/features/editor.js",
-    "assets/087ee1c45ddea7bd/features/exporter.js",
-    "assets/087ee1c45ddea7bd/features/generation.js",
-    "assets/087ee1c45ddea7bd/features/panels.js",
-    "assets/087ee1c45ddea7bd/features/pattern.js",
-    "assets/087ee1c45ddea7bd/features/preview-pages.js",
-    "assets/087ee1c45ddea7bd/features/project.js",
-    "assets/087ee1c45ddea7bd/features/renderer.js",
-    "assets/087ee1c45ddea7bd/features/shell.js",
-    "assets/087ee1c45ddea7bd/features/source-preview.js",
-    "assets/087ee1c45ddea7bd/features/subject.js",
-    "assets/087ee1c45ddea7bd/features/view.js",
-    "assets/087ee1c45ddea7bd/app.js",
-    "assets/087ee1c45ddea7bd/mascot-small.png",
-    "assets/087ee1c45ddea7bd/favicon.png"
+    "assets/5ebb9cdd69fdba0d/style.css",
+    "assets/5ebb9cdd69fdba0d/generation-worker.js",
+    "assets/5ebb9cdd69fdba0d/mard221.js",
+    "assets/5ebb9cdd69fdba0d/builtin-cards.js",
+    "assets/5ebb9cdd69fdba0d/palettes.js",
+    "assets/5ebb9cdd69fdba0d/engine.js",
+    "assets/5ebb9cdd69fdba0d/ocr-runtime.js",
+    "assets/5ebb9cdd69fdba0d/imports.js",
+    "assets/5ebb9cdd69fdba0d/project-store.js",
+    "assets/5ebb9cdd69fdba0d/core/state.js",
+    "assets/5ebb9cdd69fdba0d/features/bead-preview.js",
+    "assets/5ebb9cdd69fdba0d/features/editor.js",
+    "assets/5ebb9cdd69fdba0d/features/exporter.js",
+    "assets/5ebb9cdd69fdba0d/features/generation.js",
+    "assets/5ebb9cdd69fdba0d/features/panels.js",
+    "assets/5ebb9cdd69fdba0d/features/pattern.js",
+    "assets/5ebb9cdd69fdba0d/features/preview-pages.js",
+    "assets/5ebb9cdd69fdba0d/features/project.js",
+    "assets/5ebb9cdd69fdba0d/features/renderer.js",
+    "assets/5ebb9cdd69fdba0d/features/shell.js",
+    "assets/5ebb9cdd69fdba0d/features/source-preview.js",
+    "assets/5ebb9cdd69fdba0d/features/subject.js",
+    "assets/5ebb9cdd69fdba0d/features/view.js",
+    "assets/5ebb9cdd69fdba0d/app.js",
+    "assets/5ebb9cdd69fdba0d/mascot-small.png",
+    "assets/5ebb9cdd69fdba0d/favicon.png"
   ],
-  "initialBytes": 471067,
-  "offlineBytes": 10011750,
+  "initialBytes": 481626,
+  "offlineBytes": 10022293,
   "files": {
     ".nojekyll": {
       "bytes": 0,
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
-    "assets/087ee1c45ddea7bd/app.js": {
-      "bytes": 14062,
-      "sha256": "b5662dd6509d9cbdd4f2c4d8e0b6ae00a8fd2272fab6c79af264316860507174"
+    "assets/5ebb9cdd69fdba0d/app.js": {
+      "bytes": 14102,
+      "sha256": "b87dc254cfc9ca691f4476dca3418e580379b99f87f425a3ce24a66c0f8c1c2a"
     },
-    "assets/087ee1c45ddea7bd/builtin-cards.js": {
+    "assets/5ebb9cdd69fdba0d/builtin-cards.js": {
       "bytes": 21380,
       "sha256": "23c6dceb9de5940dd29146648bf8812827297c6d9148f8504682c6a1bde456a1"
     },
-    "assets/087ee1c45ddea7bd/core/state.js": {
-      "bytes": 4545,
-      "sha256": "22758a12e07730025e327ea07a2052541fc67da3385942b8875b8e245cd3429e"
+    "assets/5ebb9cdd69fdba0d/core/state.js": {
+      "bytes": 4664,
+      "sha256": "08eb171e7a74a2e9033ae8ee3c7fcfd63b86760a3f04829c204850d5d7656ee7"
     },
-    "assets/087ee1c45ddea7bd/engine.js": {
+    "assets/5ebb9cdd69fdba0d/engine.js": {
       "bytes": 18951,
       "sha256": "c64fb146f5ff65bc38f77020bf608947b44b044abfe6f6897b3de9b8357776c6"
     },
-    "assets/087ee1c45ddea7bd/favicon.png": {
+    "assets/5ebb9cdd69fdba0d/favicon.png": {
       "bytes": 4320,
       "sha256": "e8e41e768289bff4f33bdb0a9aaa245706493032bf26da6805f482ce2b84f009"
     },
-    "assets/087ee1c45ddea7bd/features/bead-preview.js": {
-      "bytes": 13584,
-      "sha256": "ccc8a976eb1fe4e4daa4b6c799a62c0f3df340a9221d21ad6d07216db1d844f3"
+    "assets/5ebb9cdd69fdba0d/features/bead-preview.js": {
+      "bytes": 16424,
+      "sha256": "c2a801828766a863ae67886187724ddc525a1e61743d1feb6cc1f53f5f06406a"
     },
-    "assets/087ee1c45ddea7bd/features/editor.js": {
-      "bytes": 25405,
-      "sha256": "8c33c9d6f77d95b47a2790ae98023f7d2e6630ad9cdf3c0dcbbf6ebe8b64a878"
+    "assets/5ebb9cdd69fdba0d/features/editor.js": {
+      "bytes": 25954,
+      "sha256": "901cf7ddaa65d57dfec7a4722d5da06f0b4fa4b0370c780477edd51b4693c450"
     },
-    "assets/087ee1c45ddea7bd/features/exporter.js": {
+    "assets/5ebb9cdd69fdba0d/features/exporter.js": {
       "bytes": 7023,
       "sha256": "0d2851c169235ed56713c98b2ea8d396856b159674d547869f50b0d711917f51"
     },
-    "assets/087ee1c45ddea7bd/features/generation.js": {
+    "assets/5ebb9cdd69fdba0d/features/generation.js": {
       "bytes": 4414,
       "sha256": "36b80bb4d59d51748f13a2cc4ebf8af98c6e1ef225c97fbc2838f277eb05b6ee"
     },
-    "assets/087ee1c45ddea7bd/features/panels.js": {
+    "assets/5ebb9cdd69fdba0d/features/panels.js": {
       "bytes": 14398,
       "sha256": "77b76287a6d7fac85520a31fb7c5f0cdc41d4f41f56e73f4fcd9b2f55a5c2590"
     },
-    "assets/087ee1c45ddea7bd/features/pattern.js": {
+    "assets/5ebb9cdd69fdba0d/features/pattern.js": {
       "bytes": 19766,
       "sha256": "58ad7e3f66df80d5bd720fe30c489ba90f1ddd79f6626cf07d2f3a48225d8ee2"
     },
-    "assets/087ee1c45ddea7bd/features/preview-pages.js": {
-      "bytes": 9948,
-      "sha256": "4d23d9519458821769f3e32f4d52e51798c999157a166e15b359d52c2f5d37af"
+    "assets/5ebb9cdd69fdba0d/features/preview-pages.js": {
+      "bytes": 10117,
+      "sha256": "63e66b5dc32b22e36c9096afe4de6a626908fa2413da14ef5a506bef82282adf"
     },
-    "assets/087ee1c45ddea7bd/features/project.js": {
+    "assets/5ebb9cdd69fdba0d/features/project.js": {
       "bytes": 14540,
       "sha256": "1c5124db1b5885286dd6ddacfecddb93f217458f36ce5f1f778b9229002a5c69"
     },
-    "assets/087ee1c45ddea7bd/features/renderer.js": {
-      "bytes": 9856,
-      "sha256": "befc95777e3435513a2e31b245a2f252d16390da96ba4f5d18cbdb4caad3cf8a"
+    "assets/5ebb9cdd69fdba0d/features/renderer.js": {
+      "bytes": 9930,
+      "sha256": "9a7d5b6a6f85641476096b182c171fe3c1873090ee0423f5ab9fb40e4f3477d1"
     },
-    "assets/087ee1c45ddea7bd/features/shell.js": {
-      "bytes": 18845,
-      "sha256": "f638570b3beafadfced1ea8024f6ad653b69e6d3f3f5972e78724af155ff30fb"
+    "assets/5ebb9cdd69fdba0d/features/shell.js": {
+      "bytes": 18857,
+      "sha256": "8062141177b767bc84d1871f2250ff2d782fdb168425bb5b1e2e423effd70148"
     },
-    "assets/087ee1c45ddea7bd/features/source-preview.js": {
+    "assets/5ebb9cdd69fdba0d/features/source-preview.js": {
       "bytes": 11941,
       "sha256": "15524adcad4966a9dfc94a468372fc262324a50b8d44aca5196987ba1393fe6a"
     },
-    "assets/087ee1c45ddea7bd/features/subject.js": {
+    "assets/5ebb9cdd69fdba0d/features/subject.js": {
       "bytes": 686,
       "sha256": "d111e4e7648fd755644bd596a3ebbd856f7a1b05c47970150b9f252ac08dcfc6"
     },
-    "assets/087ee1c45ddea7bd/features/view.js": {
-      "bytes": 13935,
-      "sha256": "924ec5de8b82d0d400a8fe943e303bc2989b462a5ca11b7c714d1fe83d995fd3"
+    "assets/5ebb9cdd69fdba0d/features/view.js": {
+      "bytes": 14565,
+      "sha256": "67939c79b40144e9835a285e0be53f6e93a549b6466e88e59efc5b467f101f7a"
     },
-    "assets/087ee1c45ddea7bd/generation-worker.js": {
+    "assets/5ebb9cdd69fdba0d/generation-worker.js": {
       "bytes": 883,
       "sha256": "505932ed1f091d5339feb0f1ab2f98adea6047493ccc84b4057610c25f21c023"
     },
-    "assets/087ee1c45ddea7bd/imports.js": {
+    "assets/5ebb9cdd69fdba0d/imports.js": {
       "bytes": 22349,
       "sha256": "df16bf57e59cad548c188d8571b46c446bc976995a8e8554a4ddad266f34d602"
     },
-    "assets/087ee1c45ddea7bd/mard221.js": {
+    "assets/5ebb9cdd69fdba0d/mard221.js": {
       "bytes": 7037,
       "sha256": "1c118d8d54d2f67ecb2743065abcc1e260cab196b8497bfaa3bddd6e3bff6e35"
     },
-    "assets/087ee1c45ddea7bd/mascot-small.png": {
+    "assets/5ebb9cdd69fdba0d/mascot-small.png": {
       "bytes": 32303,
       "sha256": "320d8445504de02b957a855f7b9360f9b3fcb44d4b9ce57f86352f95c7be4015"
     },
-    "assets/087ee1c45ddea7bd/ocr-runtime.js": {
+    "assets/5ebb9cdd69fdba0d/ocr-runtime.js": {
       "bytes": 4995,
       "sha256": "a97087771d977a4af2e37af38741e64d57a8e384ea4ff84efe954d823660f9e1"
     },
-    "assets/087ee1c45ddea7bd/palettes.js": {
+    "assets/5ebb9cdd69fdba0d/palettes.js": {
       "bytes": 31792,
       "sha256": "c81e10a8d4aa7107395cf41af66f0943fe1376a8d1893b1250872a3c502b19b1"
     },
-    "assets/087ee1c45ddea7bd/project-store.js": {
+    "assets/5ebb9cdd69fdba0d/project-store.js": {
       "bytes": 12598,
       "sha256": "6e22d480cad26bf9de72da68b654edc3cbf44484cb222cf56fdd843dcb96edd7"
     },
-    "assets/087ee1c45ddea7bd/style.css": {
-      "bytes": 92216,
-      "sha256": "b924df342696dbfc6b52a3f64e2e8b9541ea257fc5a11d6273a29f7d8e60571b"
+    "assets/5ebb9cdd69fdba0d/style.css": {
+      "bytes": 97932,
+      "sha256": "3610c557635d35ca7f382662981f9c64a0aeb9bd4b6a270f34b067dc7555cbee"
     },
     "index.html": {
-      "bytes": 39295,
-      "sha256": "bd9c532ff683f7ec1d58049ec5a3349fc12cf3077e8ad4e25b87a9666a4b88bc"
+      "bytes": 39705,
+      "sha256": "4de1853327b7ef90048fa7b41a567e115efdbed5994850daad5e30e7770ecef7"
     },
     "licenses/tesseract-5.1.1-ecb59495b4e4f4c5/third-party.txt": {
       "bytes": 24733,
