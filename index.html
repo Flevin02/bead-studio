@@ -16,8 +16,8 @@
       document.documentElement.dataset.themeSource = manual ? 'manual' : 'system';
     })();
   </script>
-  <link rel="stylesheet" href="assets/4e67f1ed0bd122d5/style.css">
-<link rel="icon" type="image/png" href="assets/4e67f1ed0bd122d5/favicon.png">
+  <link rel="stylesheet" href="assets/6cb5eab42f0758a4/style.css">
+<link rel="icon" type="image/png" href="assets/6cb5eab42f0758a4/favicon.png">
 </head>
 <body>
   <svg class="svg-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
@@ -36,9 +36,21 @@
     <symbol id="i-print" viewBox="0 0 24 24"><path d="M7 8V3h10v5M7 17H3V9h18v8h-4M7 14h10v7H7zM17 11h1"/></symbol>
     <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.5 13.2A8.5 8.5 0 0 1 10.8 3.5a8.5 8.5 0 1 0 9.7 9.7Z"/></symbol>
     <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></symbol>
+
+    <symbol id="i-pointer" viewBox="0 0 24 24"><path d="m5 3 14 9-7 1-3 7-4-17Zm7 10 5 6"/></symbol>
+    <symbol id="i-pencil" viewBox="0 0 24 24"><path d="m14 5 5 5M4 20l5-1L20 8a2 2 0 0 0-5-5L4 14v6Z"/></symbol>
+    <symbol id="i-eraser" viewBox="0 0 24 24"><path d="m4 13 9-10 8 8-8 10H8l-4-4a3 3 0 0 1 0-4Zm3-3 9 8M12 21h9"/></symbol>
+    <symbol id="i-fill" viewBox="0 0 24 24"><path d="m5 3 11 11-7 7-8-8L11 3m-9 9h13m5 1s-3 4-3 6a3 3 0 0 0 6 0c0-2-3-6-3-6Z"/></symbol>
+    <symbol id="i-remove" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8 8 8 8m0-8-8 8"/></symbol>
+    <symbol id="i-recolor" viewBox="0 0 24 24"><path d="M4 8h15m-4-4 4 4-4 4M20 16H5m4-4-4 4 4 4"/></symbol>
+    <symbol id="i-dropper" viewBox="0 0 24 24"><path d="m14 4 6 6m-8-4 6 6m-5-5L3 17v4h4L17 11m-2-6 2-2a3 3 0 0 1 4 4l-2 2"/></symbol>
+    <symbol id="i-hand" viewBox="0 0 24 24"><path d="M8 11V5a2 2 0 0 1 4 0v6-7a2 2 0 0 1 4 0v7-5a2 2 0 0 1 4 0v8c0 5-3 8-7 8-3 0-5-2-7-5l-3-4a2 2 0 0 1 3-3l2 2Z"/></symbol>
+    <symbol id="i-undo" viewBox="0 0 24 24"><path d="m8 4-5 5 5 5M3 9h10a7 7 0 0 1 0 14"/></symbol>
+    <symbol id="i-redo" viewBox="0 0 24 24"><path d="m16 4 5 5-5 5m5-5H11a7 7 0 0 0 0 14"/></symbol>
+    <symbol id="i-stack" viewBox="0 0 24 24"><rect x="7" y="6" width="14" height="14" rx="3"/><path d="M17 6V4a2 2 0 0 0-2-2H5a3 3 0 0 0-3 3v10a2 2 0 0 0 2 2h3"/></symbol>
   </defs></svg>
   <header class="topbar">
-    <a class="brand" href="#" aria-label="我勒个豆首页"><span class="brand-mark"><img src="assets/4e67f1ed0bd122d5/mascot-small.png" alt="" width="48" height="48" draggable="false"></span><span class="brand-name">我勒个豆<span>拼豆图纸工坊</span></span></a>
+    <a class="brand" href="#" aria-label="我勒个豆首页"><span class="brand-mark"><img src="assets/6cb5eab42f0758a4/mascot-small.png" alt="" width="48" height="48" draggable="false"></span><span class="brand-name">我勒个豆<span>拼豆图纸工坊</span></span></a>
     <section class="project-bar" aria-label="作品与操作模式">
       <div class="project-actions"><div class="mode-switch" role="group" aria-label="操作模式"><button id="designModeBtn" class="active" aria-pressed="true">制图</button><button id="beadingModeBtn" aria-pressed="false">拼豆</button></div><button id="readingExportBtn" class="primary-btn reading-only export-button" aria-label="导出图纸"><span class="export-icon-slot" aria-hidden="true"><svg class="export-icon"><use href="#i-download"/></svg></span><span class="export-label">导出图纸</span><span class="export-format">PNG</span></button><button id="mobileExportBtn" class="primary-btn export-button" aria-label="导出图纸"><span class="export-icon-slot" aria-hidden="true"><svg class="export-icon"><use href="#i-download"/></svg></span><span class="export-label">导出图纸</span></button></div>
       <div class="save-box" id="saveBox" hidden><div class="save-line"><span id="saveStatus" role="status" aria-live="polite">正在读取本地作品…</span><button id="retrySaveBtn" class="text-btn" hidden>重试保存</button><button id="retryRestoreBtn" class="text-btn" hidden>重试恢复</button><button id="reloadProjectBtn" class="text-btn" hidden>重新载入</button><button id="newProjectBtn" class="text-btn" hidden>开始新作品</button></div></div>
@@ -68,11 +80,26 @@
       </aside>
       <section class="preview panel" aria-label="图纸预览">
         <div class="preview-toolbar"><div class="preview-title"><span class="status-dot"></span><h2 id="previewHeading">图纸预览</h2><span id="demoTag" class="demo-tag">示例</span><span id="patternMeta" class="pattern-meta">32 × 32 格</span></div><div id="readingHighlightStatus" class="reading-highlight-status" hidden><span id="readingHighlightLabel" role="status" aria-live="polite"><span id="readingAllColors">显示全部颜色</span><span id="readingSelectedColor" hidden><i id="readingHighlightSwatch" aria-hidden="true"></i>仅显示 <strong id="readingHighlightCode"></strong></span></span><button id="cancelReadingHighlightBtn" class="text-btn" hidden>取消高亮</button></div><div class="view-toggle" role="group" aria-label="图纸方向"><button id="normalBtn" aria-pressed="true" class="active"><svg><use href="#i-normal"/></svg>正向</button><button id="mirrorBtn" aria-pressed="false"><svg><use href="#i-mirror"/></svg>镜像</button></div><div class="reading-tools reading-only"><span id="readingDirection">正向</span><button id="paletteToggleBtn" class="text-btn" aria-expanded="false" aria-controls="readingPaletteDialog">豆子清单</button></div></div>
-        <div class="canvas-stage" id="canvasStage"><div class="canvas-scroll" id="canvasScroll"><div class="canvas-holder" id="canvasHolder"><canvas id="patternCanvas" aria-label="拼豆图纸，点击色块可替换同色号，配色清单可查看豆数和改色" role="img"></canvas><div id="cellMarker" class="cell-marker" aria-hidden="true" hidden></div><div id="rowMarker" class="axis-marker row-marker" aria-hidden="true" hidden></div><div id="columnMarker" class="axis-marker column-marker" aria-hidden="true" hidden></div></div></div><div class="direction-badge" id="directionBadge"><svg><use href="#i-normal"/></svg><span>正向图纸</span></div></div>
-        <div class="preview-bottom"><div class="cell-info" id="cellInfo"><svg><use href="#i-grid"/></svg><span>点击色块，快捷改色</span></div><div class="zoom-controls"><button id="zoomOutBtn" class="icon-btn" aria-label="缩小">−</button><button id="zoomResetBtn" class="zoom-number" aria-label="重置缩放">100%</button><button id="zoomInBtn" class="icon-btn" aria-label="放大">＋</button><span class="zoom-divider"></span><button id="fitBtn" class="icon-btn" title="适应画布" aria-label="适应画布"><svg viewBox="0 0 24 24"><path d="M9 4H4v5m11-5h5v5M4 15v5h5m11-5v5h-5"/></svg></button></div></div>
+        <section id="editorPanel" class="editor-panel" aria-label="手动修图" hidden>
+          <div class="editor-heading"><strong>修图工具</strong><div class="editor-history"><button id="editorUndoBtn" title="撤销上一步 · Ctrl/⌘ Z" disabled><svg aria-hidden="true"><use href="#i-undo"/></svg><span>撤销</span></button><button id="editorRedoBtn" title="重做 · Ctrl/⌘ Shift Z" disabled><svg aria-hidden="true"><use href="#i-redo"/></svg><span>重做</span></button></div><button id="editorCloseBtn" class="editor-close" aria-label="收起修图工具">收起 <span aria-hidden="true">⌃</span></button></div>
+          <div class="editor-tools" role="group" aria-label="修图工具">
+            <button data-edit-tool="inspect" aria-pressed="true" title="查看格子信息"><svg aria-hidden="true"><use href="#i-pointer"/></svg><span>检查</span></button>
+            <button data-edit-tool="pencil" aria-pressed="false" title="补豆或连续改色 · B"><svg aria-hidden="true"><use href="#i-pencil"/></svg><span>画笔</span></button>
+            <button data-edit-tool="eraser" aria-pressed="false" title="擦除豆子 · E"><svg aria-hidden="true"><use href="#i-eraser"/></svg><span>橡皮</span></button>
+            <button data-edit-tool="fill" aria-pressed="false" title="填充同色连续区域 · G"><svg aria-hidden="true"><use href="#i-fill"/></svg><span>填充</span></button>
+            <button data-edit-tool="remove" aria-pressed="false" title="清除指定区域"><svg aria-hidden="true"><use href="#i-remove"/></svg><span>消除</span></button>
+            <button data-edit-tool="recolor" aria-pressed="false" title="替换单格、连续区域或全图同色号"><svg aria-hidden="true"><use href="#i-recolor"/></svg><span>换色</span></button>
+            <button data-edit-tool="eyedropper" aria-pressed="false" title="从图纸取色号 · I"><svg aria-hidden="true"><use href="#i-dropper"/></svg><span>吸管</span></button>
+            <button data-edit-tool="pan" aria-pressed="false" title="拖动画布 · H"><svg aria-hidden="true"><use href="#i-hand"/></svg><span>平移</span></button>
+          </div>
+          <div class="editor-context"><div class="editor-instruction"><strong id="editorToolName">检查</strong><span id="editorToolHint">点击查看格子与色号</span></div><button id="editorColorBtn" class="editor-color" aria-label="选择当前绘制色号"><i id="editorColorChip"></i><span><small>当前颜色</small><strong id="editorColorCode">选择色号</strong></span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button><label id="editorRemoveOptions" hidden>消除范围 <select id="editorRemoveMode"><option value="connected">同色连续区域</option><option value="occupied">连通的有豆区域</option><option value="all">全图同色号</option></select></label></div>
+
+        </section>
+        <div class="canvas-stage" id="canvasStage"><div class="canvas-scroll" id="canvasScroll"><div class="canvas-holder" id="canvasHolder"><canvas id="patternCanvas" aria-label="拼豆图纸，点击色块可替换同色号，配色清单可查看豆数和改色" role="img"></canvas><div id="cellMarker" class="cell-marker" aria-hidden="true" hidden></div><div id="rowMarker" class="axis-marker row-marker" aria-hidden="true" hidden></div><div id="columnMarker" class="axis-marker column-marker" aria-hidden="true" hidden></div></div></div><div id="sourcePreview" class="source-preview" aria-label="完整原图预览" hidden><div class="source-view-actions"><span>原图 · 原始方向 · 只读</span><button id="sourceZoomOut" class="secondary-btn" aria-label="缩小原图">−</button><span id="sourceZoomValue">100%</span><button id="sourceZoomIn" class="secondary-btn" aria-label="放大原图">＋</button><button id="sourceFitBtn" class="text-btn">适应</button><button id="sourceFullscreenBtn" class="text-btn">全屏</button></div><div id="sourcePreviewScroll" class="source-preview-scroll"><div class="source-preview-holder"><img id="sourcePreviewImage" alt="当前完整原图，保持原始方向" draggable="false"></div></div></div><button id="sourcePreviewBtn" class="source-preview-launch" aria-label="查看原图" aria-pressed="false"><img id="sourcePreviewThumb" alt="" draggable="false"><span>查看原图</span><svg aria-hidden="true"><use href="#i-stack"/></svg></button><div class="direction-badge" id="directionBadge"><svg><use href="#i-normal"/></svg><span>正向图纸</span></div></div>
+        <div class="preview-bottom"><div id="editorRegionActions" class="editor-region-actions" hidden><span id="editorRegionSummary" role="status"></span><button id="editorApplyBtn" class="primary-btn">应用修改</button><button id="editorCancelBtn" class="secondary-btn">取消预览</button></div><button id="editorToolsBtn" class="text-btn editor-launch" aria-expanded="false" aria-controls="editorPanel"><svg aria-hidden="true"><use href="#i-pencil"/></svg><span>修图</span></button><div class="cell-info" id="cellInfo"><svg><use href="#i-grid"/></svg><span>点击色块，快捷改色</span></div><div class="zoom-controls"><button id="zoomOutBtn" class="icon-btn" aria-label="缩小">−</button><button id="zoomResetBtn" class="zoom-number" aria-label="重置缩放">100%</button><button id="zoomInBtn" class="icon-btn" aria-label="放大">＋</button><span class="zoom-divider"></span><button id="fitBtn" class="icon-btn" title="适应画布" aria-label="适应画布"><svg viewBox="0 0 24 24"><path d="M9 4H4v5m11-5h5v5M4 15v5h5m11-5v5h-5"/></svg></button></div></div>
         <div class="mirror-note" id="mirrorNote" hidden><svg><use href="#i-mirror"/></svg>当前为镜像，导出的图纸也会保持这个方向。</div>
       </section>
-      <aside class="palette panel" id="palettePanel" aria-label="配色与用量"><div class="palette-heading"><h2>豆子清单</h2><svg><use href="#i-bead"/></svg></div><div class="stats"><div><strong id="totalBeads">0</strong><span>颗</span></div><div><strong id="totalColors">0</strong><span>色</span></div></div><div class="dimensions"><span>预计成品尺寸</span><strong id="dimensions">16 × 16 cm</strong><small>按 5 mm 豆估算</small></div><div class="palette-list-heading"><span>配色色号</span><span>用量 / 颗</span></div><div class="palette-list" id="paletteList"></div><button id="clearHighlightBtn" class="clear-highlight" hidden>取消颜色高亮</button><button id="resetColorsBtn" class="clear-highlight" hidden>恢复自动配色</button><p class="reading-palette-note reading-only">点击图纸色块或清单色号，只显示全部同色号豆子，其他豆子暂时隐藏。取消高亮恢复全图。</p><p class="palette-note">点击色号高亮，点击「改色」换色号。<br>默认 MARD 221，颜色为屏幕参考。<br><button id="sourcesBtn" class="text-btn">色卡来源与识别说明</button></p></aside>
+      <aside class="palette panel" id="palettePanel" aria-label="配色与用量"><div class="palette-heading"><h2>豆子清单</h2><svg><use href="#i-bead"/></svg></div><div class="stats"><div><strong id="totalBeads">0</strong><span>颗</span></div><div><strong id="totalColors">0</strong><span>色</span></div></div><div class="dimensions"><span>预计成品尺寸</span><strong id="dimensions">16 × 16 cm</strong><small>按 5 mm 豆估算</small></div><div class="palette-list-heading"><span>配色色号</span><span>用量 / 颗</span></div><div class="palette-list" id="paletteList"></div><button id="clearHighlightBtn" class="clear-highlight" hidden>取消颜色高亮</button><button id="resetColorsBtn" class="clear-highlight" hidden>恢复自动生成结果</button><p class="reading-palette-note reading-only">点击图纸色块或清单色号，只显示全部同色号豆子，其他豆子暂时隐藏。取消高亮恢复全图。</p><p class="palette-note">点击色号高亮，点击「改色」换色号。<br>默认 MARD 221，颜色为屏幕参考。<br><button id="sourcesBtn" class="text-btn">色卡来源与识别说明</button></p></aside>
     </div>
     <section class="mobile-palette-peek" aria-label="常用豆色预览"><button id="mobilePaletteBtn" class="palette-peek-heading" aria-haspopup="dialog" aria-controls="readingPaletteDialog" aria-expanded="false"><strong>豆子清单</strong><span id="mobileBeadSummary">433 颗 · 10 色</span><svg><use href="#i-arrow"/></svg></button><div id="mobileColorPeek" class="palette-peek-colors"></div></section>
     <div class="below-workspace"><span><svg><use href="#i-lock"/></svg>图片仅在你的浏览器里处理，不会上传</span><button id="printBtn" class="plain-btn"><svg><use href="#i-print"/></svg>打印图纸</button></div>
@@ -81,6 +108,7 @@
   </main>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <div id="projectLoading" class="project-loading" role="status">正在读取本地作品…</div>
+  <dialog id="editorConfirmDialog" class="new-project-dialog" aria-labelledby="editorConfirmTitle"><h2 id="editorConfirmTitle" tabindex="-1">重新生成图纸？</h2><p id="editorConfirmMessage"></p><div class="color-dialog-actions"><button id="editorConfirmCancel" class="secondary-btn">保留当前图纸</button><button id="editorConfirmApply" class="primary-btn">重新生成</button></div></dialog>
   <dialog id="newProjectDialog" class="new-project-dialog" aria-labelledby="newProjectTitle"><h2 id="newProjectTitle">开始新作品？</h2><p>开始新作品会替换此浏览器保存的上一件作品。新图生成并保存成功前，旧记录会保留。</p><div class="color-dialog-actions"><button id="cancelNewProjectBtn" class="secondary-btn">取消</button><button id="confirmNewProjectBtn" class="primary-btn">继续，开始新作品</button></div></dialog>
   <dialog id="readingPaletteDialog" class="reading-palette-dialog" aria-labelledby="readingPaletteTitle"><div class="dialog-heading"><h2 id="readingPaletteTitle" tabindex="-1" autofocus>豆子清单</h2><button id="closeReadingPaletteBtn" class="icon-btn" aria-label="收起豆子清单">×</button></div><div id="readingPaletteContent"></div></dialog>
   <dialog id="mobileSettingsDialog" class="mobile-settings-dialog" aria-labelledby="mobileSettingsTitle" aria-describedby="mobileSettingsHint">
@@ -103,10 +131,10 @@
         <div><span id="colorDraftPreview" class="comparison-chip" aria-hidden="true"></span><span>替换色号<small id="colorDraftHex"></small></span></div>
       </div>
       <label class="search-label" for="colorSearch">搜索色号<input id="colorSearch" placeholder="例如 A1、H7" autocomplete="off"></label><div id="colorChoices" class="color-choices" aria-label="色卡中的颜色"></div><p class="color-editor-note">颜色与色号一起更新，相同色号自动合并用量。<br>更换图片、调整精细度或颜色数量，会重新生成配色并重置手动改色。</p>
-      <div class="color-dialog-actions"><button type="button" id="cancelColorBtn" class="secondary-btn">取消</button><button type="submit" class="primary-btn">保存颜色</button></div>
+      <label id="colorScopeRow" class="color-scope">替换范围 <select id="colorScope"><option value="all">全图同色号</option><option value="connected">同色连续区域</option><option value="cell">单格</option></select></label><div class="color-dialog-actions"><button type="button" id="cancelColorBtn" class="secondary-btn">取消</button><button type="submit" class="primary-btn">保存颜色</button></div>
     </form>
   </dialog>
-  <dialog id="guideDialog" aria-labelledby="guideDialogTitle"><div class="dialog-heading"><h2 id="guideDialogTitle" tabindex="-1" autofocus>从图片，到你的第一件作品</h2><button id="closeGuideBtn" class="icon-btn" aria-label="关闭指南">×</button></div><ol><li><strong>选择图片</strong><p>点击上传或拖入 PNG、JPG、WebP、GIF。推荐轮廓清晰的插画；透明部分不放豆，半透明颜色会与白色混合。</p></li><li><strong>调整图纸</strong><p>精细度决定最长边的豆数；颜色越少，备豆越容易。「背景清理」会从图片边缘向内识别纯色背景、自动裁剪主体并留白，人物内部的同色区域不受影响，识别不准时关闭即可。颜色数量下方的「清理边缘杂点」会自动去掉孤格与零碎色块，让轮廓更贴合原图；「渐变过渡」用抖动混出平滑的明暗渐变，照片建议开启、卡通请关闭。悬停可查看行列、色号和 HEX；制图模式点击色块可快捷改色，替换全部同色号格子。</p></li><li><strong>确认方向</strong><p>“正向”保持原图方向；“镜像”把图纸水平翻转。若制作过程需要翻面，请按自己的转印和熨烫方式选择。</p></li><li><strong>拼豆时专心读图</strong><p>切换到“拼豆”，点击有色格子会显示该色号的全部豆子，其他色号暂时隐藏，同时保留行、列、色号和 HEX。也可从豆子清单选色；点击图纸上方“取消高亮”或再次点击清单选中色号恢复全图。返回“制图”继续调整，图纸数据不变。</p></li><li><strong>下次接着做</strong><p>最近一件作品会在此浏览器后台自动保存，重开后可接着做，不显示日常保存通知。设备之间不自动同步，清除网站数据或浏览器存储不可用时无法保留；PNG可随时下载另存。开始新作品会先提醒替换。</p></li><li><strong>白天与黑夜</strong><p>顶部月亮/太阳按钮可切换模式。首次随系统设置，手动选择会在浏览器中记住。黑夜调暗界面、图纸空白格和网格，豆色与色号不变，导出和打印仍是白底。</p></li><li><strong>导出与制作</strong><p>PNG 包含完整网格、分区辅助线（每 5 格一条主线、四边刻度）、色号和用量清单，打印图纸同样保留。默认使用 MARD 221 色号。也可导入 CSV/JSON 或图片色卡，再按导入色卡匹配。屏幕颜色为参考，备豆请核对实物。</p></li></ol><div class="guide-foot"><svg><use href="#i-lock"/></svg>图片在本地处理；图片色卡首次识别需要联网。</div><button id="gotItBtn" class="primary-btn">开始我的创作</button></dialog>
+  <dialog id="guideDialog" aria-labelledby="guideDialogTitle"><div class="dialog-heading"><h2 id="guideDialogTitle" tabindex="-1" autofocus>从图片，到你的第一件作品</h2><button id="closeGuideBtn" class="icon-btn" aria-label="关闭指南">×</button></div><ol><li><strong>选择图片</strong><p>点击上传或拖入 PNG、JPG、WebP、GIF。推荐轮廓清晰的插画；透明部分不放豆，半透明颜色会与白色混合。</p></li><li><strong>调整图纸</strong><p>精细度决定最长边的豆数；颜色越少，备豆越容易。「背景清理」会从图片边缘向内识别纯色背景、自动裁剪主体并留白，人物内部的同色区域不受影响，识别不准时关闭即可。颜色数量下方的「清理边缘杂点」会自动去掉孤格与零碎色块，让轮廓更贴合原图；「渐变过渡」用抖动混出平滑的明暗渐变，照片建议开启、卡通请关闭。悬停可查看行列、色号和 HEX；制图模式点击色块可快捷改色，替换全部同色号格子。</p></li><li><strong>确认方向</strong><p>“正向”保持原图方向；“镜像”把图纸水平翻转。若制作过程需要翻面，请按自己的转印和熨烫方式选择。</p></li><li><strong>拼豆时专心读图</strong><p>切换到“拼豆”，点击有色格子会显示该色号的全部豆子，其他色号暂时隐藏，同时保留行、列、色号和 HEX。也可从豆子清单选色；点击图纸上方“取消高亮”或再次点击清单选中色号恢复全图。返回“制图”继续调整，图纸数据不变。</p></li><li><strong>下次接着做</strong><p>修图工具可画笔补豆、橡皮擦除或预览区域修改；撤销重做只保留本次使用的操作，刷新保留已应用的图纸。最近一件作品会在此浏览器后台自动保存，重开后可接着做，不显示日常保存通知。设备之间不自动同步，清除网站数据或浏览器存储不可用时无法保留；PNG可随时下载另存。开始新作品会先提醒替换。</p></li><li><strong>白天与黑夜</strong><p>顶部月亮/太阳按钮可切换模式。首次随系统设置，手动选择会在浏览器中记住。黑夜调暗界面、图纸空白格和网格，豆色与色号不变，导出和打印仍是白底。</p></li><li><strong>导出与制作</strong><p>PNG 包含完整网格、分区辅助线（每 5 格一条主线、四边刻度）、色号和用量清单，打印图纸同样保留。默认使用 MARD 221 色号。也可导入 CSV/JSON 或图片色卡，再按导入色卡匹配。屏幕颜色为参考，备豆请核对实物。</p></li></ol><div class="guide-foot"><svg><use href="#i-lock"/></svg>图片在本地处理；图片色卡首次识别需要联网。</div><button id="gotItBtn" class="primary-btn">开始我的创作</button></dialog>
       <dialog id="importDialog" class="import-dialog" aria-labelledby="importTitle">
     <div class="dialog-heading"><h2 id="importTitle">导入我的色卡</h2><button id="closeImportBtn" class="icon-btn" aria-label="关闭导入色卡">×</button></div>
     <p class="color-target">导入后，只从这张色卡里匹配图片，并显示你自己的色号。</p>
@@ -132,12 +160,12 @@
 
 
   <script type="application/json" id="ocr-config">{"mode": "website", "base": "vendor/ocr/tesseract-5.1.1-ecb59495b4e4f4c5/"}</script>
-  <script defer src="assets/4e67f1ed0bd122d5/mard221.js"></script>
-  <script defer src="assets/4e67f1ed0bd122d5/palettes.js"></script>
-  <script defer src="assets/4e67f1ed0bd122d5/ocr-runtime.js"></script>
-  <script defer src="assets/4e67f1ed0bd122d5/imports.js"></script>
-  <script defer src="assets/4e67f1ed0bd122d5/project-store.js"></script>
+  <script defer src="assets/6cb5eab42f0758a4/mard221.js"></script>
+  <script defer src="assets/6cb5eab42f0758a4/palettes.js"></script>
+  <script defer src="assets/6cb5eab42f0758a4/ocr-runtime.js"></script>
+  <script defer src="assets/6cb5eab42f0758a4/imports.js"></script>
+  <script defer src="assets/6cb5eab42f0758a4/project-store.js"></script>
   <!-- 入口以模块加载：core/ 与 features/ 按依赖自动引入，均为同目录静态文件。 -->
-  <script type="module" src="assets/4e67f1ed0bd122d5/app.js"></script>
+  <script type="module" src="assets/6cb5eab42f0758a4/app.js"></script>
 </body>
 </html>
