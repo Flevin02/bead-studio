@@ -1,4 +1,4 @@
-MARD color reference data: maxcleme/beadcolors, contributor Asher.
+MARD 221 / Artkal S / Perler / Hama Midi community color reference data: maxcleme/beadcolors, fixed source f97ff4283d03. Contributors: Asher, Perlervault, Jeppewl and those credited in source CSV files.
 MIT License
 
 Copyright (c) 2020 maxcleme

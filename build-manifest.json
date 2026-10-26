@@ -1,142 +1,153 @@
 {
-  "buildId": "b778d935d7e75941",
+  "buildId": "7daf513a2e91b476",
   "ocrVersion": "tesseract-5.1.1-ecb59495b4e4f4c5",
   "initialResources": [
     "index.html",
-    "assets/b778d935d7e75941/style.css",
-    "assets/b778d935d7e75941/mard221.js",
-    "assets/b778d935d7e75941/builtin-cards.js",
-    "assets/b778d935d7e75941/palettes.js",
-    "assets/b778d935d7e75941/engine.js",
-    "assets/b778d935d7e75941/ocr-runtime.js",
-    "assets/b778d935d7e75941/imports.js",
-    "assets/b778d935d7e75941/project-store.js",
-    "assets/b778d935d7e75941/core/state.js",
-    "assets/b778d935d7e75941/features/editor.js",
-    "assets/b778d935d7e75941/features/exporter.js",
-    "assets/b778d935d7e75941/features/generation.js",
-    "assets/b778d935d7e75941/features/panels.js",
-    "assets/b778d935d7e75941/features/pattern.js",
-    "assets/b778d935d7e75941/features/project.js",
-    "assets/b778d935d7e75941/features/renderer.js",
-    "assets/b778d935d7e75941/features/shell.js",
-    "assets/b778d935d7e75941/features/source-preview.js",
-    "assets/b778d935d7e75941/features/subject.js",
-    "assets/b778d935d7e75941/features/view.js",
-    "assets/b778d935d7e75941/app.js",
-    "assets/b778d935d7e75941/mascot-small.png",
-    "assets/b778d935d7e75941/favicon.png"
+    "assets/7daf513a2e91b476/style.css",
+    "assets/7daf513a2e91b476/generation-worker.js",
+    "assets/7daf513a2e91b476/mard221.js",
+    "assets/7daf513a2e91b476/builtin-cards.js",
+    "assets/7daf513a2e91b476/palettes.js",
+    "assets/7daf513a2e91b476/engine.js",
+    "assets/7daf513a2e91b476/ocr-runtime.js",
+    "assets/7daf513a2e91b476/imports.js",
+    "assets/7daf513a2e91b476/project-store.js",
+    "assets/7daf513a2e91b476/core/state.js",
+    "assets/7daf513a2e91b476/features/bead-preview.js",
+    "assets/7daf513a2e91b476/features/editor.js",
+    "assets/7daf513a2e91b476/features/exporter.js",
+    "assets/7daf513a2e91b476/features/generation.js",
+    "assets/7daf513a2e91b476/features/panels.js",
+    "assets/7daf513a2e91b476/features/pattern.js",
+    "assets/7daf513a2e91b476/features/preview-pages.js",
+    "assets/7daf513a2e91b476/features/project.js",
+    "assets/7daf513a2e91b476/features/renderer.js",
+    "assets/7daf513a2e91b476/features/shell.js",
+    "assets/7daf513a2e91b476/features/source-preview.js",
+    "assets/7daf513a2e91b476/features/subject.js",
+    "assets/7daf513a2e91b476/features/view.js",
+    "assets/7daf513a2e91b476/app.js",
+    "assets/7daf513a2e91b476/mascot-small.png",
+    "assets/7daf513a2e91b476/favicon.png"
   ],
-  "initialBytes": 422781,
-  "offlineBytes": 9958081,
+  "initialBytes": 465726,
+  "offlineBytes": 10006443,
   "files": {
     ".nojekyll": {
       "bytes": 0,
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
-    "assets/b778d935d7e75941/app.js": {
-      "bytes": 13524,
-      "sha256": "39cc7738206826b801f055a8ebf7556d65d8435dde69438d130a83abb4c0fc7c"
+    "assets/7daf513a2e91b476/app.js": {
+      "bytes": 13918,
+      "sha256": "2262d1104ba40bc8008a7fb236837dadbe6cbae8d208e32182b522506a561b6a"
     },
-    "assets/b778d935d7e75941/builtin-cards.js": {
+    "assets/7daf513a2e91b476/builtin-cards.js": {
       "bytes": 21380,
       "sha256": "23c6dceb9de5940dd29146648bf8812827297c6d9148f8504682c6a1bde456a1"
     },
-    "assets/b778d935d7e75941/core/state.js": {
-      "bytes": 4521,
-      "sha256": "57a07ffc5ac187bb738f4bcd3be7751c02f50ac2bc6879129ab078087b232e94"
+    "assets/7daf513a2e91b476/core/state.js": {
+      "bytes": 4545,
+      "sha256": "22758a12e07730025e327ea07a2052541fc67da3385942b8875b8e245cd3429e"
     },
-    "assets/b778d935d7e75941/engine.js": {
+    "assets/7daf513a2e91b476/engine.js": {
       "bytes": 18951,
       "sha256": "c64fb146f5ff65bc38f77020bf608947b44b044abfe6f6897b3de9b8357776c6"
     },
-    "assets/b778d935d7e75941/favicon.png": {
+    "assets/7daf513a2e91b476/favicon.png": {
       "bytes": 4320,
       "sha256": "e8e41e768289bff4f33bdb0a9aaa245706493032bf26da6805f482ce2b84f009"
     },
-    "assets/b778d935d7e75941/features/editor.js": {
-      "bytes": 25040,
-      "sha256": "70647eb97b446055d4ec26b2e4563aeb9ae4c6fb495ee704f3213f6e3c026a8a"
+    "assets/7daf513a2e91b476/features/bead-preview.js": {
+      "bytes": 13584,
+      "sha256": "ccc8a976eb1fe4e4daa4b6c799a62c0f3df340a9221d21ad6d07216db1d844f3"
     },
-    "assets/b778d935d7e75941/features/exporter.js": {
+    "assets/7daf513a2e91b476/features/editor.js": {
+      "bytes": 25405,
+      "sha256": "8c33c9d6f77d95b47a2790ae98023f7d2e6630ad9cdf3c0dcbbf6ebe8b64a878"
+    },
+    "assets/7daf513a2e91b476/features/exporter.js": {
       "bytes": 7023,
       "sha256": "0d2851c169235ed56713c98b2ea8d396856b159674d547869f50b0d711917f51"
     },
-    "assets/b778d935d7e75941/features/generation.js": {
-      "bytes": 4259,
-      "sha256": "c0c1b4c619aba050d15b8be8f95f927a562291ba045eec7ab8555c62c36a4d9d"
+    "assets/7daf513a2e91b476/features/generation.js": {
+      "bytes": 4414,
+      "sha256": "36b80bb4d59d51748f13a2cc4ebf8af98c6e1ef225c97fbc2838f277eb05b6ee"
     },
-    "assets/b778d935d7e75941/features/panels.js": {
-      "bytes": 14249,
-      "sha256": "9493e3cde0407f226b63d93fba11d49cc029ac1c5d5cec943f12688e3e4b2304"
+    "assets/7daf513a2e91b476/features/panels.js": {
+      "bytes": 14398,
+      "sha256": "77b76287a6d7fac85520a31fb7c5f0cdc41d4f41f56e73f4fcd9b2f55a5c2590"
     },
-    "assets/b778d935d7e75941/features/pattern.js": {
-      "bytes": 18471,
-      "sha256": "6887e52336b3639b8fa5cb22d7724154300970e85c0e8548f5220307063296a7"
+    "assets/7daf513a2e91b476/features/pattern.js": {
+      "bytes": 19766,
+      "sha256": "58ad7e3f66df80d5bd720fe30c489ba90f1ddd79f6626cf07d2f3a48225d8ee2"
     },
-    "assets/b778d935d7e75941/features/project.js": {
-      "bytes": 14514,
-      "sha256": "c7899896351e50ad765611d1963cc32f323e28b16bf317cd68887211b5b3e1bc"
+    "assets/7daf513a2e91b476/features/preview-pages.js": {
+      "bytes": 9948,
+      "sha256": "4d23d9519458821769f3e32f4d52e51798c999157a166e15b359d52c2f5d37af"
     },
-    "assets/b778d935d7e75941/features/renderer.js": {
+    "assets/7daf513a2e91b476/features/project.js": {
+      "bytes": 14540,
+      "sha256": "1c5124db1b5885286dd6ddacfecddb93f217458f36ce5f1f778b9229002a5c69"
+    },
+    "assets/7daf513a2e91b476/features/renderer.js": {
       "bytes": 9856,
       "sha256": "befc95777e3435513a2e31b245a2f252d16390da96ba4f5d18cbdb4caad3cf8a"
     },
-    "assets/b778d935d7e75941/features/shell.js": {
+    "assets/7daf513a2e91b476/features/shell.js": {
       "bytes": 18845,
       "sha256": "f638570b3beafadfced1ea8024f6ad653b69e6d3f3f5972e78724af155ff30fb"
     },
-    "assets/b778d935d7e75941/features/source-preview.js": {
-      "bytes": 9842,
-      "sha256": "8334d168e70c329516852d5194cd494e53812bfffacce14011422048a5ee71b3"
+    "assets/7daf513a2e91b476/features/source-preview.js": {
+      "bytes": 9627,
+      "sha256": "1065a6b177ea769504d605de3a0f3458de01902b47089a8a11f4c64e7e9a800a"
     },
-    "assets/b778d935d7e75941/features/subject.js": {
+    "assets/7daf513a2e91b476/features/subject.js": {
       "bytes": 686,
       "sha256": "d111e4e7648fd755644bd596a3ebbd856f7a1b05c47970150b9f252ac08dcfc6"
     },
-    "assets/b778d935d7e75941/features/view.js": {
-      "bytes": 10923,
-      "sha256": "cb659e9996de656bd2b7ffc84643e45c58a2bd981ac702bc9376bcd109a11ca7"
+    "assets/7daf513a2e91b476/features/view.js": {
+      "bytes": 11084,
+      "sha256": "27817a7fd467d3e5ed65350bc86c185c909b877528324ca7d69f750fee3e9e0a"
     },
-    "assets/b778d935d7e75941/generation-worker.js": {
-      "bytes": 46441,
-      "sha256": "9df3d721f103eae39d2e162e5a53e05813434e3487ea5accf450abb150b759ca"
+    "assets/7daf513a2e91b476/generation-worker.js": {
+      "bytes": 883,
+      "sha256": "505932ed1f091d5339feb0f1ab2f98adea6047493ccc84b4057610c25f21c023"
     },
-    "assets/b778d935d7e75941/imports.js": {
-      "bytes": 21185,
-      "sha256": "9c200654c8eff917c5a0f736c7aab5cb26030003a53e6ea214759756a9bba2b4"
+    "assets/7daf513a2e91b476/imports.js": {
+      "bytes": 22349,
+      "sha256": "df16bf57e59cad548c188d8571b46c446bc976995a8e8554a4ddad266f34d602"
     },
-    "assets/b778d935d7e75941/mard221.js": {
+    "assets/7daf513a2e91b476/mard221.js": {
       "bytes": 7037,
       "sha256": "1c118d8d54d2f67ecb2743065abcc1e260cab196b8497bfaa3bddd6e3bff6e35"
     },
-    "assets/b778d935d7e75941/mascot-small.png": {
+    "assets/7daf513a2e91b476/mascot-small.png": {
       "bytes": 32303,
       "sha256": "320d8445504de02b957a855f7b9360f9b3fcb44d4b9ce57f86352f95c7be4015"
     },
-    "assets/b778d935d7e75941/ocr-runtime.js": {
+    "assets/7daf513a2e91b476/ocr-runtime.js": {
       "bytes": 4995,
       "sha256": "a97087771d977a4af2e37af38741e64d57a8e384ea4ff84efe954d823660f9e1"
     },
-    "assets/b778d935d7e75941/palettes.js": {
-      "bytes": 26652,
-      "sha256": "bd77e1d46ec38ed7f915a02f382d4c23d62e920c7b8c492af85cb090e55404f8"
+    "assets/7daf513a2e91b476/palettes.js": {
+      "bytes": 31792,
+      "sha256": "c81e10a8d4aa7107395cf41af66f0943fe1376a8d1893b1250872a3c502b19b1"
     },
-    "assets/b778d935d7e75941/project-store.js": {
-      "bytes": 12427,
-      "sha256": "d54d43cb3c3f38ce8e87fe02e026d3dda21a061ebf8a624caca940ec6cf723a2"
+    "assets/7daf513a2e91b476/project-store.js": {
+      "bytes": 12598,
+      "sha256": "6e22d480cad26bf9de72da68b654edc3cbf44484cb222cf56fdd843dcb96edd7"
     },
-    "assets/b778d935d7e75941/style.css": {
-      "bytes": 85008,
-      "sha256": "7b5d29b9419d7aeccbc373eba18cd2ba4b051900954f690132aef43195304454"
+    "assets/7daf513a2e91b476/style.css": {
+      "bytes": 92184,
+      "sha256": "11c257d1dd51eeb47f4707d76bb434217150a158aa67805a6416f5b7f9298345"
     },
     "index.html": {
-      "bytes": 36770,
-      "sha256": "bf5af2218811ca6e4b43a820895025c6ced13253c0940f13f3d2c3f4004f013c"
+      "bytes": 39295,
+      "sha256": "ac24f65119d9a82d0e9d44b6d0c410f467386c46c7e0d1a18d54444ac94ca614"
     },
     "licenses/tesseract-5.1.1-ecb59495b4e4f4c5/third-party.txt": {
-      "bytes": 24597,
-      "sha256": "0f0b6772973c24a88618386eadb71e4c29fa7669c822dbf82617630c607925ef"
+      "bytes": 24733,
+      "sha256": "aeda54f3f0142c24b62464651956a157dd40995f2f16a723ea40a03b8c09975d"
     },
     "vendor/ocr/tesseract-5.1.1-ecb59495b4e4f4c5/eng.traineddata.gz": {
       "bytes": 2952873,
